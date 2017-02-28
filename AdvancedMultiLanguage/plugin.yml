@@ -1,8 +1,8 @@
 ﻿name: AdvancedMultiLanguage
 main: me.smessie.MultiLanguage.bukkit.Main
-version: 1.8.2
+version: 1.8.3
 author: smessie
-website: http://www.smessaert.be
+website: http://smessie.com
 description: An extensive MultiLanguage Plugin with dev's API!
 commands:
   language:
