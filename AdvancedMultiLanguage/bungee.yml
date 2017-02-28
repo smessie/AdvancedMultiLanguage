@@ -1,0 +1,5 @@
+name: AdvancedMultiLanguage
+main: me.smessie.MultiLanguage.bungeecord.Main
+version: 1.8.0
+author: smessie
+description: An extensive MultiLanguage Plugin with dev's API!

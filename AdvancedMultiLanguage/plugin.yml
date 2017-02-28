@@ -1,0 +1,39 @@
+﻿name: AdvancedMultiLanguage
+main: me.smessie.MultiLanguage.bukkit.Main
+version: 1.8.2
+author: smessie
+website: http://www.smessaert.be
+description: An extensive MultiLanguage Plugin with dev's API!
+commands:
+  language:
+    default: true
+    description: English language command.
+    usage: /Language <language>
+  langue:
+    default: true
+    description: French language command.
+    usage: /langue <langue>
+  sprache:
+    default: true
+    description: German language command.
+    usage: /sprache <sprache>
+  taal:
+    default: true
+    description: Dutch language command.
+    usage: /taal <taal>
+  idioma:
+    default: true
+    description: Spanish language command.
+    usage: /idioma <idioma>
+  язык:
+    default: true
+    description: Russian language command.
+    usage: /язык <язык>
+  valoda:
+    default: true
+    description: Latvian language command.
+    usage: /valoda <valoda>
+  sprog:
+    default: true
+    description: Denis language command.
+    usage: /sprog <sprog>

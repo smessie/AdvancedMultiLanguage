@@ -1,0 +1,55 @@
+##########################################
+#####     Advaned Multi Language     #####
+#####        Author: smessie         #####
+##########################################
+
+# Wich language will be token as default.
+defaultLanguage: EN
+
+#set to true for using MySQL insteed of a flatfile
+use-mysql: false
+
+#set to true if you want that their automatically will create a mysql table if no one exist and use-mysql is set to true
+create-mysqlTable-ifNotExist: true
+
+# Whether or not we want to use the Metrics plugin staticstics.
+# Information collected can be found here: http://mcstats.org/plugin/AdvancedMultiLanguage
+use-metrics: true
+
+#login of mysql, only needed when use-mysql is set to true.
+mysql:
+  user: root
+  password: ''
+  host: localhost
+  port: 3306
+  database: AdvancedMultiLanguage
+  table: AML_Players
+  
+# All supported language are here
+# set to false to disable
+languages:
+  EN: true
+  NL: true
+  FR: true
+  DE: true
+  ES: true
+  RU: true
+  LV: true
+  DK: true
+  BG: true
+  IT: true
+  HG: true
+
+# Warn the players when they select this language that they don't may talk it in the chat. (=true)
+warn-on-select:
+  EN: false
+  NL: false
+  FR: false
+  DE: false
+  ES: false
+  RU: false
+  LV: false
+  DK: false
+  BG: false
+  IT: false
+  HG: false
