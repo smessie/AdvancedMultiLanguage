@@ -1,6 +1,6 @@
 ﻿name: AdvancedMultiLanguage
 main: me.smessie.MultiLanguage.bukkit.Main
-version: 1.8.3
+version: 1.8.4
 author: smessie
 website: http://smessie.com
 description: An extensive MultiLanguage Plugin with dev's API!
@@ -37,3 +37,19 @@ commands:
     default: true
     description: Denis language command.
     usage: /sprog <sprog>
+  език:
+    default: true
+    description: Bulgarian language command.
+    usage: /език <език>
+  语言:
+    default: true
+    description: Chinese language command.
+    usage: /语言 <语言>
+  nyelv:
+    default: true
+    description: Hungarian language command.
+    usage: /nyelv <nyelv>
+  lingua:
+    default: true
+    description: Italian language command.
+    usage: /lingua <lingua>

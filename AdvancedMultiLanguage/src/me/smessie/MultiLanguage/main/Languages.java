@@ -22,6 +22,7 @@ public class Languages {
 		languages.add("HU");	languagesOwn.put("Magyar", "HU");		languagesFull.put("Hungarian", "HU");
 		languages.add("IT");	languagesOwn.put("Italiano", "IT");		languagesFull.put("Italian", "IT");
 		languages.add("BG");	languagesOwn.put("български", "BG");	languagesFull.put("Bulgarian", "BG");
+		languages.add("CHS");	languagesOwn.put("Chinois", "CHS");		languagesFull.put("Chinese", "CHS");
 	}
 
 }

@@ -14,7 +14,8 @@ public enum Language {
 	DANSK("DK"),
 	HUNGARIAN("HU"),
 	ITALIAN("IT"),
-	BULGARIAN("BG");
+	BULGARIAN("BG"),
+	CHINESE("CHS");
 	
 	private final String language;
 	
@@ -61,6 +62,8 @@ public enum Language {
 			return ITALIAN;
 		} else if(language.equalsIgnoreCase("BG")) {
 			return BULGARIAN;
+		} else if(language.equalsIgnoreCase("CHS")) {
+			return CHINESE;
 		} else {
 			return null;
 		}

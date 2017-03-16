@@ -23,7 +23,7 @@ public class Chinese implements CommandExecutor {
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String [] args) {
 		
-		if(label.equalsIgnoreCase("language")) {
+		if(label.equalsIgnoreCase("语言")) {
 			
 			if(sender instanceof Player) {
 				
@@ -56,13 +56,13 @@ public class Chinese implements CommandExecutor {
 									}
 								}
 							});
-							player.sendMessage(ChatColor.GREEN + "Your language is set to " + taal + ".");
+							player.sendMessage(ChatColor.GREEN + "您的语言设置为 " + taal + ".");
 							
 							if(Implement.warnOnSelect(taal)) {
-								player.sendMessage(red + "Attention! You may not speak " + taal + " in the chat.");
+								player.sendMessage(red + "注意！你可能不会在聊天中说英语  " + taal + ".");
 							}
 						} else {
-							player.sendMessage(red + "This language is disabled! :(");
+							player.sendMessage(red + "此语言已禁用。 :(");
 						}
 					} else 
 					if(Languages.languagesFull.containsKey(taal.toLowerCase())) {
@@ -88,13 +88,13 @@ public class Chinese implements CommandExecutor {
 									}
 								}
 							});
-							player.sendMessage(ChatColor.GREEN + "Your language is set to " + taal + ".");
+							player.sendMessage(ChatColor.GREEN + "您的语言设置为 " + taal + ".");
 							
 							if(Implement.warnOnSelect(taal)) {
-								player.sendMessage(red + "Attention! You may not speak " + taal + " in the chat.");
+								player.sendMessage(red + "注意！你可能不会在聊天中说英语 " + taal + ".");
 							}
 						} else {
-							player.sendMessage(red + "This language is disabled! :(");
+							player.sendMessage(red + "此语言已禁用。 :(");
 						}
 					} else
 					if(Languages.languagesOwn.containsKey(taal.toLowerCase())) {
@@ -120,22 +120,22 @@ public class Chinese implements CommandExecutor {
 									}
 								}
 							});
-							player.sendMessage(ChatColor.GREEN + "Your language is set to " + taal + ".");
+							player.sendMessage(ChatColor.GREEN + "您的语言设置为 " + taal + ".");
 							
 							if(Implement.warnOnSelect(taal)) {
-								player.sendMessage(red + "Attention! You may not speak " + taal + " in the chat.");
+								player.sendMessage(red + "注意！你可能不会在聊天中说英语 " + taal + ".");
 							}
 						} else {
-							player.sendMessage(red + "This language is disabled! :(");
+							player.sendMessage(red + "此语言已禁用。 :(");
 						}
 					} else {
-						player.sendMessage(red + "Language " + args[0] + " not found!");
+						player.sendMessage(red + "未找到语言 " + args[0] + "。");
 					}
 				} else {
-					player.sendMessage(red + "Usage: /language <language>");
+					player.sendMessage(red + "用法：/语言<语言>");
 				}
 			} else {
-				sender.sendMessage(red + "H�, only ingame players can set there language! :o");
+				sender.sendMessage(red + "只有游戏玩家才能设置他们的语言。 :o");
 			}
 		}
 		return true;

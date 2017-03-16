@@ -8,13 +8,17 @@ import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.YamlConfiguration;
 import me.smessie.MultiLanguage.bungeecord.commands.Sprog;
+import me.smessie.MultiLanguage.bungeecord.commands.Bulgarian;
 import me.smessie.MultiLanguage.bungeecord.commands.English;
+import me.smessie.MultiLanguage.bungeecord.commands.Hungarian;
 import me.smessie.MultiLanguage.bungeecord.commands.Idioma;
+import me.smessie.MultiLanguage.bungeecord.commands.Italian;
 import me.smessie.MultiLanguage.bungeecord.commands.Langue;
 import me.smessie.MultiLanguage.bungeecord.commands.Russian;
 import me.smessie.MultiLanguage.bungeecord.commands.Sprache;
 import me.smessie.MultiLanguage.bungeecord.commands.Taal;
 import me.smessie.MultiLanguage.bungeecord.commands.Valoda;
+import me.smessie.MultiLanguage.main.Languages;
 import me.smessie.MultiLanguage.main.MySQL;
 import me.smessie.MultiLanguage.main.Settings;
 
@@ -74,6 +78,11 @@ public class Main extends Plugin {
 		ProxyServer.getInstance().getPluginManager().registerCommand(this, new Russian());
 		ProxyServer.getInstance().getPluginManager().registerCommand(this, new Valoda());
 		ProxyServer.getInstance().getPluginManager().registerCommand(this, new Sprog());
+		ProxyServer.getInstance().getPluginManager().registerCommand(this, new Bulgarian());
+		ProxyServer.getInstance().getPluginManager().registerCommand(this, new Hungarian());
+		ProxyServer.getInstance().getPluginManager().registerCommand(this, new Italian());
+		
+		Languages.addSupportedLanguages();
 	}
 	
 	public void onDisable() {
