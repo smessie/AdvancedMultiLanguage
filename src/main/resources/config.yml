@@ -6,13 +6,13 @@
 # Wich language will be token as default.
 defaultLanguage: EN
 
-#set to true for using MySQL insteed of a flatfile
+#set to true for using MySQL instead of a flatfile
 use-mysql: false
 
 #set to true if you want that their automatically will create a mysql table if no one exist and use-mysql is set to true
 create-mysqlTable-ifNotExist: true
 
-# Whether or not we want to use the Metrics plugin staticstics.
+# Whether or not we want to use the Metrics plugin statistics.
 # Information collected can be found here: http://mcstats.org/plugin/AdvancedMultiLanguage
 use-metrics: true
 
@@ -39,6 +39,7 @@ languages:
   BG: true
   IT: true
   HG: true
+  CHS: true
 
 # Warn the players when they select this language that they don't may talk it in the chat. (=true)
 warn-on-select:
@@ -53,3 +54,4 @@ warn-on-select:
   BG: false
   IT: false
   HG: false
+  CHS: false

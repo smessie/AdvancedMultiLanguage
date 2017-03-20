@@ -1,4 +1,4 @@
-﻿﻿name: AdvancedMultiLanguage
+name: AdvancedMultiLanguage
 main: me.smessie.MultiLanguage.bukkit.Main
 version: ${project.version}
 author: smessie

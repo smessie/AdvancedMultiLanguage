@@ -17,6 +17,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+@SuppressWarnings("LossyEncoding")
 public class Langue implements CommandExecutor {
 	
 	ChatColor red = ChatColor.RED;
@@ -41,19 +42,17 @@ public class Langue implements CommandExecutor {
 							if(event.isCancelled()) {
 								return true;
 							}
-							Bukkit.getScheduler().runTaskAsynchronously(Main.plugin, new Runnable() {
-								public void run() {
-									if(Main.useMysql) {
-										Settings.connectMysql();
-										try {
-											MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
-										} catch (SQLException e) {
-											e.printStackTrace();
-										}
-										MySQL.disable();
-									} else {
-										Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
+							Bukkit.getScheduler().runTaskAsynchronously(Main.plugin, () -> {
+								if(Main.useMysql) {
+									Settings.connectMysql();
+									try {
+										MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
+									} catch (SQLException e) {
+										e.printStackTrace();
 									}
+									MySQL.disable();
+								} else {
+									Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
 								}
 							});
 							player.sendMessage(ChatColor.GREEN + "Votre langue est définie sur " + taal + ".");
@@ -73,19 +72,17 @@ public class Langue implements CommandExecutor {
 							if(event.isCancelled()) {
 								return true;
 							}
-							Bukkit.getScheduler().runTaskAsynchronously(Main.plugin, new Runnable() {
-								public void run() {
-									if(Main.useMysql) {
-										Settings.connectMysql();
-										try {
-											MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
-										} catch (SQLException e) {
-											e.printStackTrace();
-										}
-										MySQL.disable();
-									} else {
-										Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
+							Bukkit.getScheduler().runTaskAsynchronously(Main.plugin, () -> {
+								if(Main.useMysql) {
+									Settings.connectMysql();
+									try {
+										MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
+									} catch (SQLException e) {
+										e.printStackTrace();
 									}
+									MySQL.disable();
+								} else {
+									Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
 								}
 							});
 							player.sendMessage(ChatColor.GREEN + "Votre langue est définie sur " + taal + ".");
@@ -106,19 +103,17 @@ public class Langue implements CommandExecutor {
 							if(event.isCancelled()) {
 								return true;
 							}
-							Bukkit.getScheduler().runTaskAsynchronously(Main.plugin, new Runnable() {
-								public void run() {
-									if(Main.useMysql) {
-										Settings.connectMysql();
-										try {
-											MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
-										} catch (SQLException e) {
-											e.printStackTrace();
-										}
-										MySQL.disable();
-									} else {
-										Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
+							Bukkit.getScheduler().runTaskAsynchronously(Main.plugin, () -> {
+								if(Main.useMysql) {
+									Settings.connectMysql();
+									try {
+										MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
+									} catch (SQLException e) {
+										e.printStackTrace();
 									}
+									MySQL.disable();
+								} else {
+									Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
 								}
 							});
 							player.sendMessage(ChatColor.GREEN + "Votre langue est définie sur " + taal + ".");
@@ -136,7 +131,7 @@ public class Langue implements CommandExecutor {
 					player.sendMessage(red + "Emploi: /langue <langue>");
 				}
 			} else {
-				sender.sendMessage(red + "Hé, Seuls les joueurs ingame peuvent définir la langue! :o");
+				sender.sendMessage(red + "H?, Seuls les joueurs ingame peuvent définir la langue! :o");
 			}
 		}
 		return true;

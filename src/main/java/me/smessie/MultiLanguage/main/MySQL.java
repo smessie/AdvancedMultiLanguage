@@ -23,7 +23,7 @@ private static Connection connection;
 	public static void createTable() throws SQLException {
 		if(Settings.createMysqlTable) {
 			String table = Settings.table;
-		    String sqlCreate = "CREATE TABLE IF NOT EXISTS `" + table + "` (`uuid` varchar(36) NOT NULL ,`language` text NOT NULL,`IP` text NOT NULL, PRIMARY KEY (`uuid`));";
+		    String sqlCreate = "CREATE TABLE IF NOT EXISTS " + table + " (uuid varchar(36) NOT NULL ,language text NOT NULL,IP text DEFAULT NULL, PRIMARY KEY (uuid));";
 	
 		    Statement stmt = connection.createStatement();
 		    stmt.execute(sqlCreate);

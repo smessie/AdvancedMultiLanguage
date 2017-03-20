@@ -45,6 +45,11 @@ public class Main extends JavaPlugin {
 		
 		defaultLanguage = getConfig().getString("defaultLanguage");
 		useMysql = getConfig().getBoolean("use-mysql");
+		Settings.mode = "Bukkit";
+		Settings.useMysql = useMysql;
+		Settings.table = getConfig().getString("mysql.table");
+		Settings.createMysqlTable = getConfig().getBoolean("create-mysqlTable-ifNotExist");
+		Settings.defaultLanguage = getConfig().getString("defaultLanguage");
 		if(useMysql) {
 			connectMysql();
 			try {
@@ -56,11 +61,6 @@ public class Main extends JavaPlugin {
 		} else {
 			DataFile.getInstance().setup(plugin);
 		}
-		Settings.mode = "Bukkit";
-		Settings.useMysql = useMysql;
-		Settings.table = getConfig().getString("mysql.table");
-		Settings.createMysqlTable = getConfig().getBoolean("create-mysqlTable-ifNotExist");
-		Settings.defaultLanguage = getConfig().getString("defaultLanguage");
 		
 		getCommand("language").setExecutor(new English());
 		getCommand("langue").setExecutor(new Langue());
