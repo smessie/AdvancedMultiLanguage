@@ -131,7 +131,7 @@ public class Langue implements CommandExecutor {
 					player.sendMessage(red + "Emploi: /langue <langue>");
 				}
 			} else {
-				sender.sendMessage(red + "H?, Seuls les joueurs ingame peuvent définir la langue! :o");
+				sender.sendMessage(red + "Hé, Seuls les joueurs ingame peuvent définir la langue! :o");
 			}
 		}
 		return true;
