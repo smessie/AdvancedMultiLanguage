@@ -33,7 +33,7 @@ public class Taal implements CommandExecutor {
 					
 					String taal = args[0];
 					
-					if(Languages.languages.contains(taal.toUpperCase())) {
+					if(Languages.isSupportedLanguage(taal.toUpperCase())) {
 						String formatTaal = taal.toUpperCase();
 						if(Implement.languageEnabled(formatTaal)) {
 							ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
@@ -66,7 +66,7 @@ public class Taal implements CommandExecutor {
 							player.sendMessage(red + "Deze taal is uitgeschakeld! :(");
 						}
 					} else
-					if(Languages.languagesFull.containsKey(taal.toLowerCase())) {
+					if(Languages.isSupportedLanguage(taal.toLowerCase())) {
 						String formatTaal = Languages.languagesFull.get(taal.toLowerCase());
 						if(Implement.languageEnabled(formatTaal)) {
 							ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
@@ -98,7 +98,7 @@ public class Taal implements CommandExecutor {
 							player.sendMessage(red + "Deze taal is uitgeschakeld! :(");
 						}
 					} else
-					if(Languages.languagesOwn.containsKey(taal.toLowerCase())) {
+					if(Languages.isSupportedLanguage(taal.toLowerCase())) {
 						String formatTaal = Languages.languagesOwn.get(taal.toLowerCase());
 						if(Implement.languageEnabled(formatTaal)) {
 							ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
@@ -136,7 +136,7 @@ public class Taal implements CommandExecutor {
 					player.sendMessage(red + "Gebruik: /taal <taal>");
 				}
 			} else {
-				sender.sendMessage(red + "Hé, enkel ingame spelers kunnen hun taal instellen! :o"	);
+				sender.sendMessage(red + "Hï¿½, enkel ingame spelers kunnen hun taal instellen! :o"	);
 			}
 		}
 		return true;

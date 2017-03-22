@@ -78,7 +78,7 @@ public class AdvancedMultiLanguageAPI {
 	 * @param language Must be one of this: NL, EN, FR, DE, ES, RU, LV, DK
 	 */
 	public static void setPlayerLanguage(final String uuid, String language) {
-		if(Languages.languages.contains(language.toUpperCase())) {
+		if(Languages.isSupportedLanguage(language.toUpperCase())) {
 			final String taal = language.toUpperCase();
 			if(Settings.languageEnabled(taal)) {
 				ProxyServer.getInstance().getScheduler().runAsync(Main.plugin, new Runnable() {
@@ -111,7 +111,7 @@ public class AdvancedMultiLanguageAPI {
 	 */
 	public static void setPlayerLanguage(final String uuid, Language language) {
 		final String taal = language.toString();
-		if(Languages.languages.contains(taal.toUpperCase())) {
+		if(Languages.isSupportedLanguage(taal.toUpperCase())) {
 			if(Settings.languageEnabled(taal)) {
 				ProxyServer.getInstance().getScheduler().runAsync(Main.plugin, () -> {
                     if(Settings.useMysql) {

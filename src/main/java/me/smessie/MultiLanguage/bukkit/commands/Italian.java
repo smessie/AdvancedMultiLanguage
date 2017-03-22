@@ -33,7 +33,7 @@ public class Italian implements CommandExecutor {
 					
 					String taal = args[0];
 					
-					if(Languages.languages.contains(taal.toUpperCase())) {
+					if(Languages.isSupportedLanguage(taal.toUpperCase())) {
 						String formatTaal = taal.toUpperCase();
 						if(Implement.languageEnabled(formatTaal)) {
 							ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
@@ -56,16 +56,16 @@ public class Italian implements CommandExecutor {
 									}
 								}
 							});
-							player.sendMessage(ChatColor.GREEN + "Il tuo linguaggio è cambiato in " + taal + ".");
+							player.sendMessage(ChatColor.GREEN + "Il tuo linguaggio ï¿½ cambiato in " + taal + ".");
 							
 							if(Implement.warnOnSelect(taal)) {
-								player.sendMessage(red + "Attenzione! Può parlare solo " + taal + " nella chat.");
+								player.sendMessage(red + "Attenzione! Puï¿½ parlare solo " + taal + " nella chat.");
 							}
 						} else {
-							player.sendMessage(red + "La lingua è indisponibile. Molto probabilmente è stato spento. :(");
+							player.sendMessage(red + "La lingua ï¿½ indisponibile. Molto probabilmente ï¿½ stato spento. :(");
 						}
 					} else 
-					if(Languages.languagesFull.containsKey(taal.toLowerCase())) {
+					if(Languages.isSupportedLanguage(taal.toLowerCase())) {
 						String formatTaal = Languages.languagesFull.get(taal.toLowerCase());
 						if(Implement.languageEnabled(formatTaal)) {
 							ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
@@ -88,16 +88,16 @@ public class Italian implements CommandExecutor {
 									}
 								}
 							});
-							player.sendMessage(ChatColor.GREEN + "Il tuo linguaggio è cambiato in " + taal + ".");
+							player.sendMessage(ChatColor.GREEN + "Il tuo linguaggio ï¿½ cambiato in " + taal + ".");
 							
 							if(Implement.warnOnSelect(taal)) {
-								player.sendMessage(red + "Attenzione! Può parlare solo " + taal + " nella chat.");
+								player.sendMessage(red + "Attenzione! Puï¿½ parlare solo " + taal + " nella chat.");
 							}
 						} else {
-							player.sendMessage(red + "La lingua è indisponibile. Molto probabilmente è stato spento. :(");
+							player.sendMessage(red + "La lingua ï¿½ indisponibile. Molto probabilmente ï¿½ stato spento. :(");
 						}
 					} else
-					if(Languages.languagesOwn.containsKey(taal.toLowerCase())) {
+					if(Languages.isSupportedLanguage(taal.toLowerCase())) {
 						String formatTaal = Languages.languagesOwn.get(taal.toLowerCase());
 						if(Implement.languageEnabled(formatTaal)) {
 							ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
@@ -120,13 +120,13 @@ public class Italian implements CommandExecutor {
 									}
 								}
 							});
-							player.sendMessage(ChatColor.GREEN + "Il tuo linguaggio è cambiato in " + taal + ".");
+							player.sendMessage(ChatColor.GREEN + "Il tuo linguaggio ï¿½ cambiato in " + taal + ".");
 							
 							if(Implement.warnOnSelect(taal)) {
-								player.sendMessage(red + "Attenzione! Può parlare solo " + taal + " nella chat.");
+								player.sendMessage(red + "Attenzione! Puï¿½ parlare solo " + taal + " nella chat.");
 							}
 						} else {
-							player.sendMessage(red + "La lingua è indisponibile. Molto probabilmente è stato spento. :(");
+							player.sendMessage(red + "La lingua ï¿½ indisponibile. Molto probabilmente ï¿½ stato spento. :(");
 						}
 					} else {
 						player.sendMessage(red + args[0] + " inaccessibile!");
@@ -135,7 +135,7 @@ public class Italian implements CommandExecutor {
 					player.sendMessage(red + "Uso: /lingua <lingua>");
 				}
 			} else {
-				sender.sendMessage(red + "Hé, Solo i giocatori possono cambiare la loro lingua. :o");
+				sender.sendMessage(red + "Hï¿½, Solo i giocatori possono cambiare la loro lingua. :o");
 			}
 		}
 		return true;

@@ -33,7 +33,7 @@ public class Sprog implements CommandExecutor {
 					
 					String taal = args[0];
 					
-					if(Languages.languages.contains(taal.toUpperCase())) {
+					if(Languages.isSupportedLanguage(taal.toUpperCase())) {
 						String formatTaal = taal.toUpperCase();
 						if(Implement.languageEnabled(formatTaal)) {
 							ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
@@ -59,13 +59,13 @@ public class Sprog implements CommandExecutor {
 							player.sendMessage(ChatColor.GREEN + "Dit eget Sprog er sat til " + taal + ".");
 							
 							if(Implement.warnOnSelect(taal)) {
-								player.sendMessage(red + "Opmærksomhed! Du må ikke tale " + taal + " i chatten.");
+								player.sendMessage(red + "Opmï¿½rksomhed! Du mï¿½ ikke tale " + taal + " i chatten.");
 							}
 						} else {
-							player.sendMessage(red + "Dette sprog er blevet slået fra! :(");
+							player.sendMessage(red + "Dette sprog er blevet slï¿½et fra! :(");
 						}
 					} else 
-					if(Languages.languagesFull.containsKey(taal.toLowerCase())) {
+					if(Languages.isSupportedLanguage(taal.toLowerCase())) {
 						String formatTaal = Languages.languagesFull.get(taal.toLowerCase());
 						if(Implement.languageEnabled(formatTaal)) {
 							ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
@@ -91,13 +91,13 @@ public class Sprog implements CommandExecutor {
 							player.sendMessage(ChatColor.GREEN + "Dit eget Sprog er sat til " + taal + ".");
 							
 							if(Implement.warnOnSelect(taal)) {
-								player.sendMessage(red + "Opmærksomhed! Du må ikke tale " + taal + " i chatten.");
+								player.sendMessage(red + "Opmï¿½rksomhed! Du mï¿½ ikke tale " + taal + " i chatten.");
 							}
 						} else {
-							player.sendMessage(red + "Dette sprog er blevet slået fra! :(");
+							player.sendMessage(red + "Dette sprog er blevet slï¿½et fra! :(");
 						}
 					} else
-					if(Languages.languagesOwn.containsKey(taal.toLowerCase())) {
+					if(Languages.isSupportedLanguage(taal.toLowerCase())) {
 						String formatTaal = Languages.languagesOwn.get(taal.toLowerCase());
 						if(Implement.languageEnabled(formatTaal)) {
 							ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
@@ -121,7 +121,7 @@ public class Sprog implements CommandExecutor {
 								}
 							});
 						} else {
-							player.sendMessage(red + "Dette sprog er blevet slået fra! :(");
+							player.sendMessage(red + "Dette sprog er blevet slï¿½et fra! :(");
 						}
 					} else {
 						player.sendMessage(red + "Sproget " + args[0] + " kunne ikke blive fundet!");
@@ -130,7 +130,7 @@ public class Sprog implements CommandExecutor {
 					player.sendMessage(red + "Brug: /Sprog <Sprog>");
 				}
 			} else {
-				sender.sendMessage(red + "Hé, Kun in-game player kan se deres eget Sprog! :o");
+				sender.sendMessage(red + "Hï¿½, Kun in-game player kan se deres eget Sprog! :o");
 			}
 		}
 		return true;

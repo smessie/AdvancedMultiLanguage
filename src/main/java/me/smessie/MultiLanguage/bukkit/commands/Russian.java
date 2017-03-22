@@ -33,7 +33,7 @@ public class Russian implements CommandExecutor {
 					
 					String taal = args[0];
 					
-					if(Languages.languages.contains(taal.toUpperCase())) {
+					if(Languages.isSupportedLanguage(taal.toUpperCase())) {
 						String formatTaal = taal.toUpperCase();
 						if(Implement.languageEnabled(formatTaal)) {
 							ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
@@ -65,7 +65,7 @@ public class Russian implements CommandExecutor {
 							player.sendMessage(red + "Этот язык отключён! :(");
 						}
 					} else
-					if(Languages.languagesFull.containsKey(taal.toLowerCase())) {
+					if(Languages.isSupportedLanguage(taal.toLowerCase())) {
 						String formatTaal = Languages.languagesFull.get(taal.toLowerCase());
 						if(Implement.languageEnabled(formatTaal)) {
 							ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
@@ -97,7 +97,7 @@ public class Russian implements CommandExecutor {
 							player.sendMessage(red + "Этот язык отключён! :(");
 						}
 					} else
-					if(Languages.languagesOwn.containsKey(taal.toLowerCase())) {
+					if(Languages.isSupportedLanguage(taal.toLowerCase())) {
 						String formatTaal = Languages.languagesOwn.get(taal.toLowerCase());
 						if(Implement.languageEnabled(formatTaal)) {
 							ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);

@@ -72,7 +72,7 @@ public class AdvancedMultiLanguageAPI {
 	 * @param language Must be one of this: NL, EN, FR, DE, ES, RU, LV, DK
 	 */
 	public static void setPlayerLanguage(String uuid, String language) {
-		if(Languages.languages.contains(language.toUpperCase())) {
+		if(Languages.isSupportedLanguage(language.toUpperCase())) {
 			String taal = language.toUpperCase();
 			if(Settings.languageEnabled(taal)) {
 				Bukkit.getScheduler().runTaskAsynchronously(Main.plugin, new Runnable() {
@@ -105,7 +105,7 @@ public class AdvancedMultiLanguageAPI {
 	 */
 	public static void setPlayerLanguage(String uuid, Language language) {
 		String taal = language.toString();
-		if(Languages.languages.contains(taal.toUpperCase())) {
+		if(Languages.isSupportedLanguage(taal.toUpperCase())) {
 			if(Settings.languageEnabled(taal)) {
 				Bukkit.getScheduler().runTaskAsynchronously(Main.plugin, new Runnable() {
 					public void run() {

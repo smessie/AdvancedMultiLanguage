@@ -25,4 +25,20 @@ public class Languages {
 		languages.add("CHS");	languagesOwn.put("chinois", "CHS");		languagesFull.put("chinese", "CHS");
 	}
 
+	public static boolean isSupportedLanguage(String language) {
+		if(languages.isEmpty()) {
+			addSupportedLanguages();
+		}
+		if(languages.contains(language.toUpperCase())) {
+			return true;
+		}
+		if(languagesOwn.containsKey(language.toLowerCase())) {
+			return true;
+		}
+		if(languagesFull.containsKey(language.toLowerCase())) {
+			return true;
+		}
+		return false;
+	}
+
 }

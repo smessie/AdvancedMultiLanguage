@@ -33,7 +33,7 @@ public class Sprache implements CommandExecutor {
 					
 					String taal = args[0];
 					
-					if(Languages.languages.contains(taal.toUpperCase())) {
+					if(Languages.isSupportedLanguage(taal.toUpperCase())) {
 						String formatTaal = taal.toUpperCase();
 						if(Implement.languageEnabled(formatTaal)) {
 							ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
@@ -59,13 +59,13 @@ public class Sprache implements CommandExecutor {
 							player.sendMessage(ChatColor.GREEN + "Ihre Sprache ist auf " + taal + " eingestellt.");
 							
 							if(Implement.warnOnSelect(taal)) {
-								player.sendMessage(red + "Obacht! Im Chat mögen Sie nicht " + taal + " sprechen.");
+								player.sendMessage(red + "Obacht! Im Chat mï¿½gen Sie nicht " + taal + " sprechen.");
 							}
 						} else {
-							player.sendMessage(red + "Diese Sprache ist außer Gefecht! :(");
+							player.sendMessage(red + "Diese Sprache ist auï¿½er Gefecht! :(");
 						}
 					} else 
-					if(Languages.languagesFull.containsKey(taal.toLowerCase())) {
+					if(Languages.isSupportedLanguage(taal.toLowerCase())) {
 						String formatTaal = Languages.languagesFull.get(taal.toLowerCase());
 						if(Implement.languageEnabled(formatTaal)) {
 							ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
@@ -91,13 +91,13 @@ public class Sprache implements CommandExecutor {
 							player.sendMessage(ChatColor.GREEN + "Ihre Sprache ist auf " + taal + " eingestellt.");
 							
 							if(Implement.warnOnSelect(taal)) {
-								player.sendMessage(red + "Obacht! Im Chat mögen Sie nicht " + taal + " sprechen.");
+								player.sendMessage(red + "Obacht! Im Chat mï¿½gen Sie nicht " + taal + " sprechen.");
 							}
 						} else {
-							player.sendMessage(red + "Diese Sprache ist außer Gefecht! :(");
+							player.sendMessage(red + "Diese Sprache ist auï¿½er Gefecht! :(");
 						}
 					} else
-					if(Languages.languagesOwn.containsKey(taal.toLowerCase())) {
+					if(Languages.isSupportedLanguage(taal.toLowerCase())) {
 						String formatTaal = Languages.languagesOwn.get(taal.toLowerCase());
 						if(Implement.languageEnabled(formatTaal)) {
 							ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
@@ -123,10 +123,10 @@ public class Sprache implements CommandExecutor {
 							player.sendMessage(ChatColor.GREEN + "Ihre Sprache ist auf " + taal + " eingestellt.");
 							
 							if(Implement.warnOnSelect(taal)) {
-								player.sendMessage(red + "Obacht! Im Chat mögen Sie nicht " + taal + " sprechen.");
+								player.sendMessage(red + "Obacht! Im Chat mï¿½gen Sie nicht " + taal + " sprechen.");
 							}
 						} else {
-							player.sendMessage(red + "Diese Sprache ist außer Gefecht! :(");
+							player.sendMessage(red + "Diese Sprache ist auï¿½er Gefecht! :(");
 						}
 					} else {
 						player.sendMessage("Sprache " + args[0] + " nicht gefunden!");
@@ -135,7 +135,7 @@ public class Sprache implements CommandExecutor {
 					player.sendMessage(red + "Gebrauch: /sprache <sprache>");
 				}
 			} else {
-				sender.sendMessage(red + "Hé, nur ingame Spieler können ihre Sprache einstellen! :o");
+				sender.sendMessage(red + "Hï¿½, nur ingame Spieler kï¿½nnen ihre Sprache einstellen! :o");
 			}
 		}
 		return true;
