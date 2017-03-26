@@ -33,7 +33,7 @@ public class Langue implements CommandExecutor {
 				if(args.length == 1) {
 					
 					String taal = args[0];
-					
+
 					if(Languages.isSupportedLanguage(taal.toUpperCase())) {
 						String formatTaal = taal.toUpperCase();
 						if(Implement.languageEnabled(formatTaal)) {
@@ -95,7 +95,7 @@ public class Langue implements CommandExecutor {
 						}
 						
 					} else
-					if(Languages.isSupportedLanguage(taal.toLowerCase())) {
+					if(Languages.languagesOwn.containsKey(taal.toLowerCase())) {
 						String formatTaal = Languages.languagesOwn.get(taal.toLowerCase());
 						if(Implement.languageEnabled(formatTaal)) {
 							ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
