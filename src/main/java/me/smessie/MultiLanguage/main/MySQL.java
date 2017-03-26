@@ -32,41 +32,23 @@ private static Connection connection;
 	}
 	
 	public static void setLanguageMysql(String uuid, String language, String ip) throws SQLException {
-		PreparedStatement statement = connection.prepareStatement("select language from " + Settings.table + " where uuid='" + uuid + "';");
-        ResultSet result = statement.executeQuery();
-       
-        if(result.next()){
-        	Statement stmt = connection.createStatement();
-    		String sqlCreate = "UPDATE `" + Settings.table + "` SET `language` = '" + language + "' WHERE `uuid` = '" + uuid + "'";
-    		stmt.execute(sqlCreate);
-    		stmt.close();
-        } else {
-        	Statement stmt = connection.createStatement();
-        	String sqlCreate = "insert into " + Settings.table + " (uuid, language, IP) values ('" + uuid + "', '" + language + "', '" + ip + "');";
-        	stmt.execute(sqlCreate);
-        	stmt.close();
-        }
+		PreparedStatement statement = connection.prepareStatement("INSERT INTO " + Settings.table + " (uuid, language, IP) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE language = VALUES(language), IP = VALUES(IP)");
+		statement.setString(1, uuid);
+		statement.setString(2, language);
+		statement.setString(3, ip);
+        statement.executeUpdate();
 	}
 	
 	public static void setLanguageMysql(String uuid, String language) throws SQLException {
-		PreparedStatement statement = connection.prepareStatement("select language from " + Settings.table + " where uuid='" + uuid + "';");
-        ResultSet result = statement.executeQuery();
-       
-        if(result.next()){
-        	Statement stmt = connection.createStatement();
-    		String sqlCreate = "UPDATE `" + Settings.table + "` SET `language` = '" + language + "' WHERE `uuid` = '" + uuid + "'";
-    		stmt.execute(sqlCreate);
-    		stmt.close();
-        } else {
-        	Statement stmt = connection.createStatement();
-        	String sqlCreate = "insert into " + Settings.table + " (uuid, language) values ('" + uuid + "', '" + language + "');";
-        	stmt.execute(sqlCreate);
-        	stmt.close();
-        }
+		PreparedStatement statement = connection.prepareStatement("INSERT INTO " + Settings.table + " (uuid, language) VALUES (?, ?) ON DUPLICATE KEY UPDATE language = VALUES(language)");
+		statement.setString(1, uuid);
+		statement.setString(2, language);
+		statement.executeUpdate();
 	}
 	
 	public static String getLanguage(String uuid) throws SQLException {
-		PreparedStatement statement = connection.prepareStatement("select language from " + Settings.table + " where uuid='" + uuid + "';");
+		PreparedStatement statement = connection.prepareStatement("select language from " + Settings.table + " where uuid= ?;");
+		statement.setString(1, uuid);
         ResultSet result = statement.executeQuery();
        
         if(result.next()){
