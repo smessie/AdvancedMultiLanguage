@@ -16,121 +16,113 @@ import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 
 public class Sprog extends Command {
-	
-	public Sprog() {
-		super("sprog");
-	}
-	
-	ChatColor red = ChatColor.RED;
-	
-	@Override
-	public void execute(CommandSender sender, String[] args) {
-		if(sender instanceof ProxiedPlayer) {
-			
-			final ProxiedPlayer player = (ProxiedPlayer) sender;
-			
-			if(args.length == 1) {
-				
-				String taal = args[0];
-				
-				if(Languages.isSupportedLanguage(taal.toUpperCase())) {
-					final String formatTaal = taal.toUpperCase();
-					if(Implement.languageEnabled(formatTaal)) {
-						ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
-						ProxyServer.getInstance().getPluginManager().callEvent(event);
-						if(event.isCancelled()) {
-							return;
-						}
-						ProxyServer.getInstance().getScheduler().runAsync(Main.plugin, new Runnable() {
-							public void run() {
-								if(Main.useMysql) {
-									try {
-										MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
-									} catch (SQLException e) {
-										e.printStackTrace();
-									}
-								} else {
-									Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
-								}
-							}
-						});
-						player.sendMessage(new TextComponent(ChatColor.GREEN + "Езикът Ви е сменен на " + taal + "."));
-						
-						if(Implement.warnOnSelect(taal)) {
-							player.sendMessage(new TextComponent(red + "Внимание, можете да говорите само на " + taal + " в чата."));
-						}
-					} else {
-						player.sendMessage(new TextComponent(red + "Dette sprog er blevet slået fra! :("));
-					}
-				} else
-				if(Languages.isSupportedLanguage(taal.toLowerCase())) {
-					final String formatTaal = Languages.languagesFull.get(taal.toLowerCase());
-					if(Implement.languageEnabled(formatTaal)) {
-						ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
-						ProxyServer.getInstance().getPluginManager().callEvent(event);
-						if(event.isCancelled()) {
-							return;
-						}
-						ProxyServer.getInstance().getScheduler().runAsync(Main.plugin, new Runnable() {
-							public void run() {
-								if(Main.useMysql) {
-									try {
-										MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
-									} catch (SQLException e) {
-										e.printStackTrace();
-									}
-								} else {
-									Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
-								}
-							}
-						});
-						player.sendMessage(new TextComponent(ChatColor.GREEN + "Езикът Ви е сменен на " + taal + "."));
-						
-						if(Implement.warnOnSelect(taal)) {
-							player.sendMessage(new TextComponent(red + "Внимание, можете да говорите само на " + taal + " в чата."));
-						}
-					} else {
-						player.sendMessage(new TextComponent(red + "Dette sprog er blevet slået fra! :("));
-					}
-				} else
-				if(Languages.isSupportedLanguage(taal.toLowerCase())) {
-					final String formatTaal = Languages.languagesOwn.get(taal.toLowerCase());
-					if(Implement.languageEnabled(formatTaal)) {
-						ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
-						ProxyServer.getInstance().getPluginManager().callEvent(event);
-						if(event.isCancelled()) {
-							return;
-						}
-						ProxyServer.getInstance().getScheduler().runAsync(Main.plugin, new Runnable() {
-							public void run() {
-								if(Main.useMysql) {
-									try {
-										MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
-									} catch (SQLException e) {
-										e.printStackTrace();
-									}
-								} else {
-									Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
-								}
-							}
-						});
-						player.sendMessage(new TextComponent(ChatColor.GREEN + "Езикът Ви е сменен на " + taal + "."));
-						
-						if(Implement.warnOnSelect(taal)) {
-							player.sendMessage(new TextComponent(red + "Внимание, можете да говорите само на " + taal + " в чата."));
-						}
-					} else {
-						player.sendMessage(new TextComponent(red + "Dette sprog er blevet slået fra! :("));
-					}
-				} else {
-					player.sendMessage(new TextComponent(red + "Sproget " + args[0] + " kunne ikke blive fundet!"));
-				}
-			} else {
-				player.sendMessage(new TextComponent(red + "Brug: /Sprog <Sprog>"));
-			}
-		} else {
-			sender.sendMessage(new TextComponent(red + "Hé, Kun in-game player kan se deres eget Sprog! :o"));
-		}
-	}
+
+    public Sprog() {
+        super("sprog");
+    }
+
+    ChatColor red = ChatColor.RED;
+
+    @Override
+    public void execute(CommandSender sender, String[] args) {
+        if (sender instanceof ProxiedPlayer) {
+
+            final ProxiedPlayer player = (ProxiedPlayer) sender;
+
+            if (args.length == 1) {
+
+                String taal = args[0];
+
+                if (Languages.isSupportedLanguage(taal.toUpperCase())) {
+                    final String formatTaal = taal.toUpperCase();
+                    if (Implement.languageEnabled(formatTaal)) {
+                        ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
+                        ProxyServer.getInstance().getPluginManager().callEvent(event);
+                        if (event.isCancelled()) {
+                            return;
+                        }
+                        ProxyServer.getInstance().getScheduler().runAsync(Main.plugin, () -> {
+                            if (Main.useMysql) {
+                                try {
+                                    MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
+                                } catch (SQLException e) {
+                                    e.printStackTrace();
+                                }
+                            } else {
+                                Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
+                            }
+                        });
+                        player.sendMessage(new TextComponent(ChatColor.GREEN + "Езикът Ви е сменен на " + taal + "."));
+
+                        if (Implement.warnOnSelect(taal)) {
+                            player.sendMessage(new TextComponent(red + "Внимание, можете да говорите само на " + taal + " в чата."));
+                        }
+                    } else {
+                        player.sendMessage(new TextComponent(red + "Dette sprog er blevet slået fra! :("));
+                    }
+                } else if (Languages.isSupportedLanguageFull(taal.toLowerCase())) {
+                    final String formatTaal = Languages.languagesFull.get(taal.toLowerCase());
+                    if (Implement.languageEnabled(formatTaal)) {
+                        ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
+                        ProxyServer.getInstance().getPluginManager().callEvent(event);
+                        if (event.isCancelled()) {
+                            return;
+                        }
+                        ProxyServer.getInstance().getScheduler().runAsync(Main.plugin, () -> {
+                            if (Main.useMysql) {
+                                try {
+                                    MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
+                                } catch (SQLException e) {
+                                    e.printStackTrace();
+                                }
+                            } else {
+                                Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
+                            }
+                        });
+                        player.sendMessage(new TextComponent(ChatColor.GREEN + "Езикът Ви е сменен на " + taal + "."));
+
+                        if (Implement.warnOnSelect(taal)) {
+                            player.sendMessage(new TextComponent(red + "Внимание, можете да говорите само на " + taal + " в чата."));
+                        }
+                    } else {
+                        player.sendMessage(new TextComponent(red + "Dette sprog er blevet slået fra! :("));
+                    }
+                } else if (Languages.isSupportedLanguageOwn(taal.toLowerCase())) {
+                    final String formatTaal = Languages.languagesOwn.get(taal.toLowerCase());
+                    if (Implement.languageEnabled(formatTaal)) {
+                        ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
+                        ProxyServer.getInstance().getPluginManager().callEvent(event);
+                        if (event.isCancelled()) {
+                            return;
+                        }
+                        ProxyServer.getInstance().getScheduler().runAsync(Main.plugin, () -> {
+                            if (Main.useMysql) {
+                                try {
+                                    MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
+                                } catch (SQLException e) {
+                                    e.printStackTrace();
+                                }
+                            } else {
+                                Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
+                            }
+                        });
+                        player.sendMessage(new TextComponent(ChatColor.GREEN + "Езикът Ви е сменен на " + taal + "."));
+
+                        if (Implement.warnOnSelect(taal)) {
+                            player.sendMessage(new TextComponent(red + "Внимание, можете да говорите само на " + taal + " в чата."));
+                        }
+                    } else {
+                        player.sendMessage(new TextComponent(red + "Dette sprog er blevet slået fra! :("));
+                    }
+                } else {
+                    player.sendMessage(new TextComponent(red + "Sproget " + args[0] + " kunne ikke blive fundet!"));
+                }
+            } else {
+                player.sendMessage(new TextComponent(red + "Brug: /Sprog <Sprog>"));
+            }
+        } else {
+            sender.sendMessage(new TextComponent(red + "Hé, Kun in-game player kan se deres eget Sprog! :o"));
+        }
+    }
 
 }

@@ -53,3 +53,7 @@ commands:
     default: true
     description: Italian language command.
     usage: /lingua <lingua>
+  język:
+    default: true
+    description: Polish language command.
+    usage: /język <język>

@@ -18,127 +18,119 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Bulgarian implements CommandExecutor {
-	
-	ChatColor red = ChatColor.RED;
-	
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String [] args) {
-		
-		if(label.equalsIgnoreCase("език")) {
-			
-			if(sender instanceof Player) {
-				
-				final Player player = (Player) sender;
-				
-				if(args.length == 1) {
-					
-					String taal = args[0];
-					
-					if(Languages.isSupportedLanguage(taal.toUpperCase())) {
-						final String formatTaal = taal.toUpperCase();
-						if(Implement.languageEnabled(formatTaal)) {
-							ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
-							Bukkit.getPluginManager().callEvent(event);
-							if(event.isCancelled()) {
-								return true;
-							}
-							Bukkit.getScheduler().runTaskAsynchronously(Main.plugin, new Runnable() {
-								public void run() {
-									if(Main.useMysql) {
-										Settings.connectMysql();
-										try {
-											MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
-										} catch (SQLException e) {
-											e.printStackTrace();
-										}
-										MySQL.disable();
-									} else {
-										Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
-									}
-								}
-							});
-							player.sendMessage(ChatColor.GREEN + "Езикът Ви е сменен на " + taal + ".");
-							
-							if(Implement.warnOnSelect(taal)) {
-								player.sendMessage(red + "Внимание, можете да говорите само на " + taal + " в чата.");
-							}
-						} else {
-							player.sendMessage(red + "Езикът е недостъпен. Най-вероятно е бил изключен. :(");
-						}
-					} else 
-					if(Languages.isSupportedLanguage(taal.toLowerCase())) {
-						final String formatTaal = Languages.languagesFull.get(taal.toLowerCase());
-						if(Implement.languageEnabled(formatTaal)) {
-							ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
-							Bukkit.getPluginManager().callEvent(event);
-							if(event.isCancelled()) {
-								return true;
-							}
-							Bukkit.getScheduler().runTaskAsynchronously(Main.plugin, new Runnable() {
-								public void run() {
-									if(Main.useMysql) {
-										Settings.connectMysql();
-										try {
-											MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
-										} catch (SQLException e) {
-											e.printStackTrace();
-										}
-										MySQL.disable();
-									} else {
-										Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
-									}
-								}
-							});
-							player.sendMessage(ChatColor.GREEN + "Езикът Ви е сменен на " + taal + ".");
-							
-							if(Implement.warnOnSelect(taal)) {
-								player.sendMessage(red + "Внимание, можете да говорите само на " + taal + " в чата.");
-							}
-						} else {
-							player.sendMessage(red + "Езикът е недостъпен. Най-вероятно е бил изключен. :(");
-						}
-					} else
-					if(Languages.isSupportedLanguage(taal.toLowerCase())) {
-						final String formatTaal = Languages.languagesOwn.get(taal.toLowerCase());
-						if(Implement.languageEnabled(formatTaal)) {
-							ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
-							Bukkit.getPluginManager().callEvent(event);
-							if(event.isCancelled()) {
-								return true;
-							}
-							Bukkit.getScheduler().runTaskAsynchronously(Main.plugin, new Runnable() {
-								public void run() {
-									if(Main.useMysql) {
-										Settings.connectMysql();
-										try {
-											MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
-										} catch (SQLException e) {
-											e.printStackTrace();
-										}
-										MySQL.disable();
-									} else {
-										Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
-									}
-								}
-							});
-							player.sendMessage(ChatColor.GREEN + "Езикът Ви е сменен на " + taal + ".");
-							
-							if(Implement.warnOnSelect(taal)) {
-								player.sendMessage(red + "Внимание, можете да говорите само на " + taal + " в чата.");
-							}
-						} else {
-							player.sendMessage(red + "Езикът е недостъпен. Най-вероятно е бил изключен. :(");
-						}
-					} else {
-						player.sendMessage(red + args[0] + " недостъпен!");
-					}
-				} else {
-					player.sendMessage(red + "Употреба: /език <език>");
-				}
-			} else {
-				sender.sendMessage(red + "Hé, Само играчи могат да сменят езика си! :o");
-			}
-		}
-		return true;
-	}
+
+    ChatColor red = ChatColor.RED;
+
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+
+        if (label.equalsIgnoreCase("език")) {
+
+            if (sender instanceof Player) {
+
+                final Player player = (Player) sender;
+
+                if (args.length == 1) {
+
+                    String taal = args[0];
+
+                    if (Languages.isSupportedLanguage(taal.toUpperCase())) {
+                        final String formatTaal = taal.toUpperCase();
+                        if (Implement.languageEnabled(formatTaal)) {
+                            ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
+                            Bukkit.getPluginManager().callEvent(event);
+                            if (event.isCancelled()) {
+                                return true;
+                            }
+                            Bukkit.getScheduler().runTaskAsynchronously(Main.plugin, () -> {
+                                if (Main.useMysql) {
+                                    Settings.connectMysql();
+                                    try {
+                                        MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
+                                    } catch (SQLException e) {
+                                        e.printStackTrace();
+                                    }
+                                    MySQL.disable();
+                                } else {
+                                    Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
+                                }
+                            });
+                            player.sendMessage(ChatColor.GREEN + "Езикът Ви е сменен на " + taal + ".");
+
+                            if (Implement.warnOnSelect(taal)) {
+                                player.sendMessage(red + "Внимание, можете да говорите само на " + taal + " в чата.");
+                            }
+                        } else {
+                            player.sendMessage(red + "Езикът е недостъпен. Най-вероятно е бил изключен. :(");
+                        }
+                    } else if (Languages.isSupportedLanguageFull(taal.toLowerCase())) {
+                        final String formatTaal = Languages.languagesFull.get(taal.toLowerCase());
+                        if (Implement.languageEnabled(formatTaal)) {
+                            ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
+                            Bukkit.getPluginManager().callEvent(event);
+                            if (event.isCancelled()) {
+                                return true;
+                            }
+                            Bukkit.getScheduler().runTaskAsynchronously(Main.plugin, () -> {
+                                if (Main.useMysql) {
+                                    Settings.connectMysql();
+                                    try {
+                                        MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
+                                    } catch (SQLException e) {
+                                        e.printStackTrace();
+                                    }
+                                    MySQL.disable();
+                                } else {
+                                    Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
+                                }
+                            });
+                            player.sendMessage(ChatColor.GREEN + "Езикът Ви е сменен на " + taal + ".");
+
+                            if (Implement.warnOnSelect(taal)) {
+                                player.sendMessage(red + "Внимание, можете да говорите само на " + taal + " в чата.");
+                            }
+                        } else {
+                            player.sendMessage(red + "Езикът е недостъпен. Най-вероятно е бил изключен. :(");
+                        }
+                    } else if (Languages.isSupportedLanguageOwn(taal.toLowerCase())) {
+                        final String formatTaal = Languages.languagesOwn.get(taal.toLowerCase());
+                        if (Implement.languageEnabled(formatTaal)) {
+                            ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
+                            Bukkit.getPluginManager().callEvent(event);
+                            if (event.isCancelled()) {
+                                return true;
+                            }
+                            Bukkit.getScheduler().runTaskAsynchronously(Main.plugin, () -> {
+                                if (Main.useMysql) {
+                                    Settings.connectMysql();
+                                    try {
+                                        MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
+                                    } catch (SQLException e) {
+                                        e.printStackTrace();
+                                    }
+                                    MySQL.disable();
+                                } else {
+                                    Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
+                                }
+                            });
+                            player.sendMessage(ChatColor.GREEN + "Езикът Ви е сменен на " + taal + ".");
+
+                            if (Implement.warnOnSelect(taal)) {
+                                player.sendMessage(red + "Внимание, можете да говорите само на " + taal + " в чата.");
+                            }
+                        } else {
+                            player.sendMessage(red + "Езикът е недостъпен. Най-вероятно е бил изключен. :(");
+                        }
+                    } else {
+                        player.sendMessage(red + args[0] + " недостъпен!");
+                    }
+                } else {
+                    player.sendMessage(red + "Употреба: /език <език>");
+                }
+            } else {
+                sender.sendMessage(red + "Hé, Само играчи могат да сменят езика си! :o");
+            }
+        }
+        return true;
+    }
 
 }

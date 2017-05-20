@@ -1,24 +1,24 @@
 package me.smessie.MultiLanguage.bungeecord.commands;
 
-import java.sql.SQLException;
-
 import me.smessie.MultiLanguage.api.Language;
 import me.smessie.MultiLanguage.bungeecord.ChangeLanguageEvent;
 import me.smessie.MultiLanguage.bungeecord.Implement;
 import me.smessie.MultiLanguage.bungeecord.Main;
 import me.smessie.MultiLanguage.main.Languages;
 import me.smessie.MultiLanguage.main.MySQL;
-import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
+import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 
-public class English extends Command {
+import java.sql.SQLException;
 
-    public English() {
-        super("language");
+public class Polish extends Command {
+
+    public Polish() {
+        super("język");
     }
 
     ChatColor red = ChatColor.RED;
@@ -52,13 +52,13 @@ public class English extends Command {
                                 Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
                             }
                         });
-                        player.sendMessage(new TextComponent(ChatColor.GREEN + "Your language is set to " + taal + "."));
+                        player.sendMessage(new TextComponent(ChatColor.GREEN + "Twój język został ustawiony na " + taal + "."));
 
                         if (Implement.warnOnSelect(taal)) {
-                            player.sendMessage(new TextComponent(red + "Attention! You may not speak " + taal + " in the chat."));
+                            player.sendMessage(new TextComponent(red + "Uwaga! Nie możesz mówić po " + taal + " na czacie."));
                         }
                     } else {
-                        player.sendMessage(new TextComponent(red + "This language is disabled! :("));
+                        player.sendMessage(new TextComponent(red + "Ten język jest wyłączony. :("));
                     }
                 } else if (Languages.isSupportedLanguageFull(taal.toLowerCase())) {
                     final String formatTaal = Languages.languagesFull.get(taal.toLowerCase());
@@ -79,13 +79,13 @@ public class English extends Command {
                                 Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
                             }
                         });
-                        player.sendMessage(new TextComponent(ChatColor.GREEN + "Your language is set to " + taal + "."));
+                        player.sendMessage(new TextComponent(ChatColor.GREEN + "Twój język został ustawiony na " + taal + "."));
 
                         if (Implement.warnOnSelect(taal)) {
-                            player.sendMessage(new TextComponent(red + "Attention! You may not speak " + taal + " in the chat."));
+                            player.sendMessage(new TextComponent(red + "Uwaga! Nie możesz mówić po " + taal + " na czacie."));
                         }
                     } else {
-                        player.sendMessage(new TextComponent(red + "This language is disabled! :("));
+                        player.sendMessage(new TextComponent(red + "Ten język jest wyłączony. :("));
                     }
                 } else if (Languages.isSupportedLanguageOwn(taal.toLowerCase())) {
                     final String formatTaal = Languages.languagesOwn.get(taal.toLowerCase());
@@ -106,22 +106,22 @@ public class English extends Command {
                                 Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
                             }
                         });
-                        player.sendMessage(new TextComponent(ChatColor.GREEN + "Your language is set to " + taal + "."));
+                        player.sendMessage(new TextComponent(ChatColor.GREEN + "Twój język został ustawiony na " + taal + "."));
 
                         if (Implement.warnOnSelect(taal)) {
-                            player.sendMessage(new TextComponent(red + "Attention! You may not speak " + taal + " in the chat."));
+                            player.sendMessage(new TextComponent(red + "Uwaga! Nie możesz mówić po " + taal + " na czacie."));
                         }
                     } else {
-                        player.sendMessage(new TextComponent(red + "This language is disabled! :("));
+                        player.sendMessage(new TextComponent(red + "Ten język jest wyłączony. :("));
                     }
                 } else {
-                    player.sendMessage(new TextComponent(red + "Language " + args[0] + " not found!"));
+                    player.sendMessage(new TextComponent(red + "Nie znaleziono języka " + args[0] + "!"));
                 }
             } else {
-                player.sendMessage(new TextComponent(red + "Usage: /language <language>"));
+                player.sendMessage(new TextComponent(red + "Użycie: /język <język>"));
             }
         } else {
-            sender.sendMessage(new TextComponent(red + "Hé, only ingame players can set there language! :o"));
+            sender.sendMessage(new TextComponent(red + "Hé, Tylko gracze w grze mogą ustawić swój język. :o"));
         }
     }
 

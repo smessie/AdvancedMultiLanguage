@@ -42,17 +42,15 @@ public class Taal extends Command {
                         if (event.isCancelled()) {
                             return;
                         }
-                        ProxyServer.getInstance().getScheduler().runAsync(Main.plugin, new Runnable() {
-                            public void run() {
-                                if (Main.useMysql) {
-                                    try {
-                                        MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
-                                    } catch (SQLException e) {
-                                        e.printStackTrace();
-                                    }
-                                } else {
-                                    Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
+                        ProxyServer.getInstance().getScheduler().runAsync(Main.plugin, () -> {
+                            if (Main.useMysql) {
+                                try {
+                                    MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
+                                } catch (SQLException e) {
+                                    e.printStackTrace();
                                 }
+                            } else {
+                                Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
                             }
                         });
                         player.sendMessage(new TextComponent(ChatColor.GREEN + "Езикът Ви е сменен на " + taal + "."));
@@ -63,7 +61,7 @@ public class Taal extends Command {
                     } else {
                         player.sendMessage(new TextComponent(red + "Deze taal is uitgeschakeld! :("));
                     }
-                } else if (Languages.isSupportedLanguage(taal.toLowerCase())) {
+                } else if (Languages.isSupportedLanguageFull(taal.toLowerCase())) {
                     final String formatTaal = Languages.languagesFull.get(taal.toLowerCase());
                     if (Implement.languageEnabled(formatTaal)) {
                         ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
@@ -71,17 +69,15 @@ public class Taal extends Command {
                         if (event.isCancelled()) {
                             return;
                         }
-                        ProxyServer.getInstance().getScheduler().runAsync(Main.plugin, new Runnable() {
-                            public void run() {
-                                if (Main.useMysql) {
-                                    try {
-                                        MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
-                                    } catch (SQLException e) {
-                                        e.printStackTrace();
-                                    }
-                                } else {
-                                    Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
+                        ProxyServer.getInstance().getScheduler().runAsync(Main.plugin, () -> {
+                            if (Main.useMysql) {
+                                try {
+                                    MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
+                                } catch (SQLException e) {
+                                    e.printStackTrace();
                                 }
+                            } else {
+                                Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
                             }
                         });
                         player.sendMessage(new TextComponent(ChatColor.GREEN + "Езикът Ви е сменен на " + taal + "."));
@@ -92,7 +88,7 @@ public class Taal extends Command {
                     } else {
                         player.sendMessage(new TextComponent(red + "Deze taal is uitgeschakeld! :("));
                     }
-                } else if (Languages.isSupportedLanguage(taal.toLowerCase())) {
+                } else if (Languages.isSupportedLanguageOwn(taal.toLowerCase())) {
                     final String formatTaal = Languages.languagesOwn.get(taal.toLowerCase());
                     if (Implement.languageEnabled(formatTaal)) {
                         ChangeLanguageEvent event = new ChangeLanguageEvent(Language.getLanguageFromString(formatTaal), player);
@@ -100,17 +96,15 @@ public class Taal extends Command {
                         if (event.isCancelled()) {
                             return;
                         }
-                        ProxyServer.getInstance().getScheduler().runAsync(Main.plugin, new Runnable() {
-                            public void run() {
-                                if (Main.useMysql) {
-                                    try {
-                                        MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
-                                    } catch (SQLException e) {
-                                        e.printStackTrace();
-                                    }
-                                } else {
-                                    Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
+                        ProxyServer.getInstance().getScheduler().runAsync(Main.plugin, () -> {
+                            if (Main.useMysql) {
+                                try {
+                                    MySQL.setLanguageMysql(player.getUniqueId().toString(), formatTaal, player.getAddress().toString());
+                                } catch (SQLException e) {
+                                    e.printStackTrace();
                                 }
+                            } else {
+                                Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
                             }
                         });
                         player.sendMessage(new TextComponent(ChatColor.GREEN + "Езикът Ви е сменен на " + taal + "."));

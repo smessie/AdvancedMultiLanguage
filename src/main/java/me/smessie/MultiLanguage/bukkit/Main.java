@@ -2,18 +2,8 @@ package me.smessie.MultiLanguage.bukkit;
 
 
 import java.sql.SQLException;
-import me.smessie.MultiLanguage.bukkit.commands.Sprog;
-import me.smessie.MultiLanguage.bukkit.commands.Bulgarian;
-import me.smessie.MultiLanguage.bukkit.commands.Chinese;
-import me.smessie.MultiLanguage.bukkit.commands.English;
-import me.smessie.MultiLanguage.bukkit.commands.Hungarian;
-import me.smessie.MultiLanguage.bukkit.commands.Idioma;
-import me.smessie.MultiLanguage.bukkit.commands.Italian;
-import me.smessie.MultiLanguage.bukkit.commands.Langue;
-import me.smessie.MultiLanguage.bukkit.commands.Russian;
-import me.smessie.MultiLanguage.bukkit.commands.Sprache;
-import me.smessie.MultiLanguage.bukkit.commands.Taal;
-import me.smessie.MultiLanguage.bukkit.commands.Valoda;
+
+import me.smessie.MultiLanguage.bukkit.commands.*;
 import me.smessie.MultiLanguage.main.Languages;
 import me.smessie.MultiLanguage.main.MySQL;
 import me.smessie.MultiLanguage.main.Settings;
@@ -74,7 +64,8 @@ public class Main extends JavaPlugin {
 		getCommand("语言").setExecutor(new Chinese());
 		getCommand("nyelv").setExecutor(new Hungarian());
 		getCommand("lingua").setExecutor(new Italian());
-		
+		getCommand("język").setExecutor(new Polish());
+
 		Languages.addSupportedLanguages();
 				
 	}
