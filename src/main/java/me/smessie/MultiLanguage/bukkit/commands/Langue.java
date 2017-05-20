@@ -55,13 +55,13 @@ public class Langue implements CommandExecutor {
 									Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
 								}
 							});
-							player.sendMessage(ChatColor.GREEN + "Votre langue est définie sur " + taal + ".");
+							player.sendMessage(ChatColor.GREEN + "Vous avez mit votre langue en " + taal + ".");
 							
 							if(Implement.warnOnSelect(taal)) {
 								player.sendMessage(red + "Attention! Tu ne dois pas parler du " + taal + " dans le chat.");
 							}
 						} else {
-							player.sendMessage(red + "Cette langue est inactivé! :(");
+							player.sendMessage(red + "Cette langue est dÃ©sactivÃ©e! :(");
 						}
 					} else 
 					if(Languages.isSupportedLanguage(taal.toLowerCase())) {
@@ -85,13 +85,13 @@ public class Langue implements CommandExecutor {
 									Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
 								}
 							});
-							player.sendMessage(ChatColor.GREEN + "Votre langue est définie sur " + taal + ".");
+							player.sendMessage(ChatColor.GREEN + "Vous avez mit votre langue en " + taal + ".");
 							
 							if(Implement.warnOnSelect(taal)) {
 								player.sendMessage(red + "Attention! Tu ne dois pas parler du " + taal + " dans le chat.");
 							}
 						} else {
-							player.sendMessage(red + "Cette langue est inactivé! :(");
+							player.sendMessage(red + "Cette langue est dÃ©sactivÃ©e! :(");
 						}
 						
 					} else
@@ -116,22 +116,22 @@ public class Langue implements CommandExecutor {
 									Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
 								}
 							});
-							player.sendMessage(ChatColor.GREEN + "Votre langue est définie sur " + taal + ".");
+							player.sendMessage(ChatColor.GREEN + "Vous avez mit votre langue en " + taal + ".");
 							
 							if(Implement.warnOnSelect(taal)) {
 								player.sendMessage(red + "Attention! Tu ne dois pas parler du " + taal + " dans le chat.");
 							}
 						} else {
-							player.sendMessage(red + "Cette langue est inactivé! :(");
+							player.sendMessage(red + "Cette langue est dÃ©sactivÃ©e! :(");
 						}
 					} else {
-						player.sendMessage(red + "Langue " + args[0] + " pas trouvé!");
+						player.sendMessage(red + "Langue " + args[0] + " n'Ã©xiste pas !");
 					}
 				} else {
-					player.sendMessage(red + "Emploi: /langue <langue>");
+					player.sendMessage(red + "Utilisation: /langue <langue>");
 				}
 			} else {
-				sender.sendMessage(red + "Hé, Seuls les joueurs ingame peuvent définir la langue! :o");
+				sender.sendMessage(red + "HÃ©, Seuls les joueurs en jeu peuvent dÃ©finir la langue ! :o");
 			}
 		}
 		return true;
