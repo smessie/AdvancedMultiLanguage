@@ -60,7 +60,7 @@ public class Langue extends Command {
 							player.sendMessage(new TextComponent(red + "Внимание, можете да говорите само на " + taal + " в чата."));
 						}
 					} else {
-						player.sendMessage(new TextComponent(red + "Cette langue est inactivé! :("));
+						player.sendMessage(new TextComponent(red + "Cette langue est désactivée! :("));
 					}
 				} else
 				if(Languages.isSupportedLanguage(taal.toLowerCase())) {
@@ -90,7 +90,7 @@ public class Langue extends Command {
 							player.sendMessage(new TextComponent(red + "Внимание, можете да говорите само на " + taal + " в чата."));
 						}
 					} else {
-						player.sendMessage(new TextComponent(red + "Cette langue est inactivé! :("));
+						player.sendMessage(new TextComponent(red + "Cette langue est désactivée! :("));
 					}
 				} else
 				if(Languages.isSupportedLanguage(taal.toLowerCase())) {
@@ -120,16 +120,16 @@ public class Langue extends Command {
 							player.sendMessage(new TextComponent(red + "Внимание, можете да говорите само на " + taal + " в чата."));
 						}
 					} else {
-						player.sendMessage(new TextComponent(red + "Cette langue est inactivé! :("));
+						player.sendMessage(new TextComponent(red + "Cette langue est désactivée! :("));
 					}
 				} else {
-					player.sendMessage(new TextComponent(red + "Langue " + args[0] + " pas trouvé!"));
+					player.sendMessage(new TextComponent(red + "Vous avez mit votre langue en " + args[0] + " pas trouvé!"));
 				}
 			} else {
-				player.sendMessage(new TextComponent(red + "Emploi: /langue <langue>"));
+				player.sendMessage(new TextComponent(red + "Utilisation: /langue <langue>"));
 			}
 		} else {
-			sender.sendMessage(new TextComponent(red + "Hé, Seuls les joueurs ingame peuvent définir la langue! :o"));
+			sender.sendMessage(new TextComponent(red + "Hé, Seuls les joueurs en jeu peuvent définir la langue ! :o"));
 		}
 	}
 
