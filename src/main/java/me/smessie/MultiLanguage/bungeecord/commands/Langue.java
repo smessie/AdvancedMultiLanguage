@@ -115,7 +115,7 @@ public class Langue extends Command {
                         player.sendMessage(new TextComponent(red + "Cette langue est désactivée! :("));
                     }
                 } else {
-                    player.sendMessage(new TextComponent(red + "Vous avez mit votre langue en " + args[0] + " pas trouvé!"));
+                    player.sendMessage(new TextComponent(red + "La langue " + args[0] + " n'éxiste pas !"));
                 }
             } else {
                 player.sendMessage(new TextComponent(red + "Utilisation: /langue <langue>"));
