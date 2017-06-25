@@ -57,7 +57,7 @@ public class Langue extends Command {
                         player.sendMessage(new TextComponent(ChatColor.GREEN + "Vous avez mit votre langue en " + taal + "."));
 
                         if (Implement.warnOnSelect(taal)) {
-                            player.sendMessage(new TextComponent(red + "Attention! Tu ne dois pas parler du " + taal + " dans le chat."));
+                            player.sendMessage(new TextComponent(red + "Attention! Tu ne dois pas parler " + taal + " dans le chat."));
                         }
                     } else {
                         player.sendMessage(new TextComponent(red + "Cette langue est désactivée! :("));
@@ -85,7 +85,7 @@ public class Langue extends Command {
                         player.sendMessage(new TextComponent(ChatColor.GREEN + "Vous avez mit votre langue en " + taal + "."));
 
                         if (Implement.warnOnSelect(taal)) {
-                            player.sendMessage(new TextComponent(red + "Attention! Tu ne dois pas parler du " + taal + " dans le chat."));
+                            player.sendMessage(new TextComponent(red + "Attention! Tu ne dois pas parler " + taal + " dans le chat."));
                         }
                     } else {
                         player.sendMessage(new TextComponent(red + "Cette langue est désactivée! :("));
@@ -113,7 +113,7 @@ public class Langue extends Command {
                         player.sendMessage(new TextComponent(ChatColor.GREEN + "Vous avez mit votre langue en " + taal + "."));
 
                         if (Implement.warnOnSelect(taal)) {
-                            player.sendMessage(new TextComponent(red + "Attention! Tu ne dois pas parler du " + taal + " dans le chat."));
+                            player.sendMessage(new TextComponent(red + "Attention! Tu ne dois pas parler " + taal + " dans le chat."));
                         }
                     } else {
                         player.sendMessage(new TextComponent(red + "Cette langue est désactivée! :("));
