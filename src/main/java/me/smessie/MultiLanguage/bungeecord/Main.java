@@ -5,13 +5,16 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import me.smessie.MultiLanguage.bungeecord.commands.*;
+import me.smessie.MultiLanguage.main.Cache;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
+import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;
 import me.smessie.MultiLanguage.main.Languages;
 import me.smessie.MultiLanguage.main.MySQL;
 import me.smessie.MultiLanguage.main.Settings;
+import sun.security.krb5.Config;
 
 public class Main extends Plugin {
 	
@@ -75,6 +78,20 @@ public class Main extends Plugin {
 		ProxyServer.getInstance().getPluginManager().registerCommand(this, new Polish());
 
 		Languages.addSupportedLanguages();
+
+		try {
+            Configuration configuration = ConfigurationProvider.getProvider(YamlConfiguration.class).load(new File(getDataFolder(), "config.yml"));
+            int caching = configuration.getInt("caching");
+            if (caching > 0) {
+                Cache.setCaching(caching);
+            } else {
+                configuration.set("caching", 300000);
+                ConfigurationProvider.getProvider(YamlConfiguration.class).load(new File(getDataFolder(), "config.yml"));
+                Cache.setCaching(300000);
+            }
+        } catch (IOException e) {
+		    e.printStackTrace();
+        }
 	}
 	
 	public void onDisable() {

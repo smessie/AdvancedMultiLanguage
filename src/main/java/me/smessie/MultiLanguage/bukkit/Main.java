@@ -4,6 +4,7 @@ package me.smessie.MultiLanguage.bukkit;
 import java.sql.SQLException;
 
 import me.smessie.MultiLanguage.bukkit.commands.*;
+import me.smessie.MultiLanguage.main.Cache;
 import me.smessie.MultiLanguage.main.Languages;
 import me.smessie.MultiLanguage.main.MySQL;
 import me.smessie.MultiLanguage.main.Settings;
@@ -67,6 +68,16 @@ public class Main extends JavaPlugin {
 		getCommand("język").setExecutor(new Polish());
 
 		Languages.addSupportedLanguages();
+
+		int caching = getConfig().getInt("caching");
+		if(caching > 0) {
+            Cache.setCaching(caching);
+        } else {
+		    getConfig().set("caching", 300000);
+		    saveConfig();
+		    Cache.setCaching(300000);
+        }
+
 				
 	}
 	public void onDisable() {

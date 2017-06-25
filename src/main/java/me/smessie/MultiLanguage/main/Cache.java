@@ -7,6 +7,8 @@ import java.util.HashMap;
 
 public class Cache {
 
+    private static int caching = 300000;
+
     private static HashMap<String, Language> cachedLanguage = new HashMap<>();
     private static HashMap<String, Long> lastCached = new HashMap<>();
 
@@ -30,9 +32,13 @@ public class Cache {
         return cachedLanguage.get(uuid);
     }
 
+    public static void setCaching(int caching1) {
+        caching = caching1;
+    }
+
     public static Language getPlayerLanguage(String uuid) {
         if (isCached(uuid)) {
-            if (getLastCached(uuid) + 300000 > System.currentTimeMillis()) {
+            if (getLastCached(uuid) + caching > System.currentTimeMillis()) {
                 return getCachedLanguage(uuid);
             }
         }
