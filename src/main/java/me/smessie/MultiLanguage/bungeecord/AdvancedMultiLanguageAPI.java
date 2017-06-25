@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.logging.Logger;
 
 import me.smessie.MultiLanguage.api.Language;
+import me.smessie.MultiLanguage.main.Cache;
 import me.smessie.MultiLanguage.main.Languages;
 import me.smessie.MultiLanguage.main.MySQL;
 import me.smessie.MultiLanguage.main.Settings;
@@ -25,22 +26,7 @@ public class AdvancedMultiLanguageAPI {
 	 * @return
 	 */
 	public static String getLanguageOfUuid(String uuid) {
-		String language = null;
-		if(Settings.useMysql) {
-			Settings.connectMysql();
-			try {
-				language = MySQL.getLanguage(uuid);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			MySQL.disable();
-		} else {
-			language = Settings.getLanguage(uuid);
-		}
-		if(language == null || language == "") {
-			language = Settings.defaultLanguage;
-		}
-		return language;
+		return Cache.getPlayerLanguage(uuid).toString();
 	}
 	
 	/**
@@ -81,8 +67,7 @@ public class AdvancedMultiLanguageAPI {
 		if(Languages.isSupportedLanguage(language.toUpperCase())) {
 			final String taal = language.toUpperCase();
 			if(Settings.languageEnabled(taal)) {
-				ProxyServer.getInstance().getScheduler().runAsync(Main.plugin, new Runnable() {
-					public void run() {
+				ProxyServer.getInstance().getScheduler().runAsync(Main.plugin, () -> {
 						if(Settings.useMysql) {
 							Settings.connectMysql();
 							try {
@@ -94,8 +79,8 @@ public class AdvancedMultiLanguageAPI {
 						} else {
 							Settings.setLanguageFile(uuid, taal);
 						}
-					}
-				});
+                        Cache.setPlayerCachedLanguage(uuid, Language.getLanguageFromString(taal));
+					});
 			} else {
 				LOGGER.severe("A plugin using AML's API tried to set a players language to a disabled (" + language + ") language!");
 			}
@@ -125,6 +110,7 @@ public class AdvancedMultiLanguageAPI {
                     } else {
                         Settings.setLanguageFile(uuid, taal);
                     }
+                    Cache.setPlayerCachedLanguage(uuid, language);
                 });
 			} else {
 				LOGGER.severe("A plugin using AML's API tried to set a players language to a disabled (" + language + ") language!");

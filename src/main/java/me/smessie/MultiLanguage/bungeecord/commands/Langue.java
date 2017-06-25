@@ -6,6 +6,7 @@ import me.smessie.MultiLanguage.api.Language;
 import me.smessie.MultiLanguage.bungeecord.ChangeLanguageEvent;
 import me.smessie.MultiLanguage.bungeecord.Implement;
 import me.smessie.MultiLanguage.bungeecord.Main;
+import me.smessie.MultiLanguage.main.Cache;
 import me.smessie.MultiLanguage.main.Languages;
 import me.smessie.MultiLanguage.main.MySQL;
 import net.md_5.bungee.api.ProxyServer;
@@ -51,6 +52,7 @@ public class Langue extends Command {
                             } else {
                                 Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
                             }
+                            Cache.setPlayerCachedLanguage(player.getUniqueId().toString(), Language.getLanguageFromString(formatTaal));
                         });
                         player.sendMessage(new TextComponent(ChatColor.GREEN + "Vous avez mit votre langue en " + taal + "."));
 
@@ -78,6 +80,7 @@ public class Langue extends Command {
                             } else {
                                 Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
                             }
+                            Cache.setPlayerCachedLanguage(player.getUniqueId().toString(), Language.getLanguageFromString(formatTaal));
                         });
                         player.sendMessage(new TextComponent(ChatColor.GREEN + "Vous avez mit votre langue en " + taal + "."));
 
@@ -105,6 +108,7 @@ public class Langue extends Command {
                             } else {
                                 Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
                             }
+                            Cache.setPlayerCachedLanguage(player.getUniqueId().toString(), Language.getLanguageFromString(formatTaal));
                         });
                         player.sendMessage(new TextComponent(ChatColor.GREEN + "Vous avez mit votre langue en " + taal + "."));
 

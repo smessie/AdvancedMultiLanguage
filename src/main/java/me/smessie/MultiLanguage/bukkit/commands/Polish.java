@@ -4,6 +4,7 @@ import me.smessie.MultiLanguage.api.Language;
 import me.smessie.MultiLanguage.bukkit.ChangeLanguageEvent;
 import me.smessie.MultiLanguage.bukkit.Implement;
 import me.smessie.MultiLanguage.bukkit.Main;
+import me.smessie.MultiLanguage.main.Cache;
 import me.smessie.MultiLanguage.main.Languages;
 import me.smessie.MultiLanguage.main.MySQL;
 import me.smessie.MultiLanguage.main.Settings;
@@ -52,6 +53,7 @@ public class Polish implements CommandExecutor {
                                 } else {
                                     Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
                                 }
+                                Cache.setPlayerCachedLanguage(player.getUniqueId().toString(), Language.getLanguageFromString(formatTaal));
                             });
                             player.sendMessage(ChatColor.GREEN + "Twój język został ustawiony na " + taal + ".");
 
@@ -81,6 +83,7 @@ public class Polish implements CommandExecutor {
                                 } else {
                                     Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
                                 }
+                                Cache.setPlayerCachedLanguage(player.getUniqueId().toString(), Language.getLanguageFromString(formatTaal));
                             });
                             player.sendMessage(ChatColor.GREEN + "Twój język został ustawiony na " + taal + ".");
 
@@ -110,6 +113,7 @@ public class Polish implements CommandExecutor {
                                 } else {
                                     Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
                                 }
+                                Cache.setPlayerCachedLanguage(player.getUniqueId().toString(), Language.getLanguageFromString(formatTaal));
                             });
                             player.sendMessage(ChatColor.GREEN + "Twój język został ustawiony na " + taal + ".");
 

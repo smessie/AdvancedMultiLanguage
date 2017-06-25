@@ -6,6 +6,7 @@ import me.smessie.MultiLanguage.api.Language;
 import me.smessie.MultiLanguage.bukkit.ChangeLanguageEvent;
 import me.smessie.MultiLanguage.bukkit.Implement;
 import me.smessie.MultiLanguage.bukkit.Main;
+import me.smessie.MultiLanguage.main.Cache;
 import me.smessie.MultiLanguage.main.Languages;
 import me.smessie.MultiLanguage.main.MySQL;
 import me.smessie.MultiLanguage.main.Settings;
@@ -54,6 +55,7 @@ public class Langue implements CommandExecutor {
                                 } else {
                                     Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
                                 }
+                                Cache.setPlayerCachedLanguage(player.getUniqueId().toString(), Language.getLanguageFromString(formatTaal));
                             });
                             player.sendMessage(ChatColor.GREEN + "Vous avez mit votre langue en " + taal + ".");
 
@@ -83,6 +85,7 @@ public class Langue implements CommandExecutor {
                                 } else {
                                     Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
                                 }
+                                Cache.setPlayerCachedLanguage(player.getUniqueId().toString(), Language.getLanguageFromString(formatTaal));
                             });
                             player.sendMessage(ChatColor.GREEN + "Vous avez mit votre langue en " + taal + ".");
 
@@ -113,6 +116,7 @@ public class Langue implements CommandExecutor {
                                 } else {
                                     Implement.setLanguageFile(player.getUniqueId().toString(), formatTaal);
                                 }
+                                Cache.setPlayerCachedLanguage(player.getUniqueId().toString(), Language.getLanguageFromString(formatTaal));
                             });
                             player.sendMessage(ChatColor.GREEN + "Vous avez mit votre langue en " + taal + ".");
 

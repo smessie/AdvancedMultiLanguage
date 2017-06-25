@@ -4,6 +4,7 @@ import java.io.File;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
+import me.smessie.MultiLanguage.main.Cache;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -24,22 +25,7 @@ public class AdvancedMultiLanguageAPI {
 	 * @return NL, EN, FR, DE, ES, RU, LV, DK
 	 */
 	public static String getLanguageOfUuid(String uuid) {
-		String language = null;
-		if(Settings.useMysql) {
-			Settings.connectMysql();
-			try {
-				language = MySQL.getLanguage(uuid);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			MySQL.disable();
-		} else {
-			language = Settings.getLanguage(uuid);
-		}
-		if(language == null || language == "") {
-			language = Settings.defaultLanguage;
-		}
-		return language;
+		return Cache.getPlayerLanguage(uuid).toString();
 	}
 	
 	/**
@@ -88,6 +74,7 @@ public class AdvancedMultiLanguageAPI {
 						} else {
 							Settings.setLanguageFile(uuid, taal);
 						}
+						Cache.setPlayerCachedLanguage(uuid, Language.getLanguageFromString(taal));
 					}
 				});
 			} else {
@@ -120,6 +107,7 @@ public class AdvancedMultiLanguageAPI {
 						} else {
 							Settings.setLanguageFile(uuid, taal);
 						}
+                        Cache.setPlayerCachedLanguage(uuid, language);
 					}
 				});
 			} else {
