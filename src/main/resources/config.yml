@@ -44,6 +44,7 @@ languages:
   HG: true
   CHS: true
   PL: true
+  PT: true
 
 # Warn the players when they select this language that they don't may talk it in the chat. (=true)
 warn-on-select:
@@ -60,3 +61,4 @@ warn-on-select:
   HG: false
   CHS: false
   PL: false
+  PT: false

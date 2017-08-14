@@ -24,6 +24,7 @@ public class Languages {
 		languages.add("BG");	languagesOwn.put("български", "BG");	languagesFull.put("bulgarian", "BG");
 		languages.add("CHS");	languagesOwn.put("chinois", "CHS");		languagesFull.put("chinese", "CHS");
 		languages.add("PL");	languagesOwn.put("polski", "PL");		languagesFull.put("polish", "PL");
+		languages.add("PT");	languagesOwn.put("português", "PT");		languagesFull.put("portuguese", "PT");
 	}
 
     public static boolean isSupportedLanguage(String language) {

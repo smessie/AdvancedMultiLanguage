@@ -57,3 +57,7 @@ commands:
     default: true
     description: Polish language command.
     usage: /język <język>
+  linguagem:
+    default: true
+    description: Portuguese language command.
+    usage: /linguagem <linguagem>
