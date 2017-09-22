@@ -6,13 +6,22 @@
 
     <groupId>me.smessie</groupId>
     <artifactId>AdvancedMultiLanguage</artifactId>
-    <version>1.10.4</version>
+    <version>1.10.5</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AdvancedMultiLanguage</name>
+            <url>http://80.82.222.241:8081/repository/maven-releases</url>
+            <layout>default</layout>
+        </repository>
+    </distributionManagement>
 
     <build>
         <resources>
@@ -37,6 +46,19 @@
                 <configuration>
                     <encoding>UTF-8</encoding>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.1</version>
+                <executions>
+                    <execution>
+                        <id>default-deploy</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

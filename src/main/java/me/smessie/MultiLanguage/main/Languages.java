@@ -31,11 +31,11 @@ public class Languages {
         if (languages.isEmpty()) {
             addSupportedLanguages();
         }
-        return languages.contains(language.toLowerCase());
+        return languages.contains(language.toUpperCase());
     }
 
     public static boolean isSupportedLanguageOwn(String language) {
-        if (languages.isEmpty()) {
+        if (languagesOwn.isEmpty()) {
             addSupportedLanguages();
         }
         return languagesOwn.containsKey(language.toLowerCase());
