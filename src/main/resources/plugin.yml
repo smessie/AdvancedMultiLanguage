@@ -61,3 +61,7 @@ commands:
     default: true
     description: Portuguese language command.
     usage: /linguagem <linguagem>
+  jezik:
+    default: true
+    description: Slovenian language command.
+    usage: /jezik <jezik>
