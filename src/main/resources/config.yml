@@ -42,6 +42,7 @@ languages:
   BG: true
   IT: true
   HG: true
+  HU: true
   CHS: true
   PL: true
   PT: true
@@ -60,6 +61,7 @@ warn-on-select:
   BG: false
   IT: false
   HG: false
+  HU: false
   CHS: false
   PL: false
   PT: false
