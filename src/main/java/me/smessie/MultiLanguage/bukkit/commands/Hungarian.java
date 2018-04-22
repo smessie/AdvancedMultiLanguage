@@ -56,13 +56,13 @@ public class Hungarian implements CommandExecutor {
                                 }
                                 Cache.setPlayerCachedLanguage(player.getUniqueId().toString(), Language.getLanguageFromString(formatTaal));
                             });
-                            player.sendMessage(ChatColor.GREEN + "A nyelv változik " + taal + ".");
+                            player.sendMessage(ChatColor.GREEN + "A nyelv megváltoztatva " + taal + ".");
 
                             if (Implement.warnOnSelect(taal)) {
-                                player.sendMessage(red + "Figyelem beszélhetünk csak " + taal + " a chat.");
+                                player.sendMessage(red + "Figyelem! Nem beszélhetsz " + taal + " a chatben.");
                             }
                         } else {
-                            player.sendMessage(red + "Nyelv nem elérhető. Legvalószínűbb, hogy ki van kapcsolva. :(");
+                            player.sendMessage(red + "A nyelv nem elérhető. Legvalószínűbb, hogy ki van kapcsolva. :(");
                         }
                     } else if (Languages.isSupportedLanguageFull(taal.toLowerCase())) {
                         String formatTaal = Languages.languagesFull.get(taal.toLowerCase());
@@ -86,13 +86,13 @@ public class Hungarian implements CommandExecutor {
                                 }
                                 Cache.setPlayerCachedLanguage(player.getUniqueId().toString(), Language.getLanguageFromString(formatTaal));
                             });
-                            player.sendMessage(ChatColor.GREEN + "A nyelv változik " + taal + ".");
+                            player.sendMessage(ChatColor.GREEN + "A nyelv megváltoztatva " + taal + ".");
 
                             if (Implement.warnOnSelect(taal)) {
-                                player.sendMessage(red + "Figyelem beszélhetünk csak " + taal + " a chat.");
+                                player.sendMessage(red + "Figyelem! Nem beszélhetsz " + taal + " a chatben.");
                             }
                         } else {
-                            player.sendMessage(red + "Nyelv nem elérhető. Legvalószínűbb, hogy ki van kapcsolva. :(");
+                            player.sendMessage(red + "A nyelv nem elérhető. Legvalószínűbb, hogy ki van kapcsolva. :(");
                         }
                     } else if (Languages.isSupportedLanguageOwn(taal.toLowerCase())) {
                         String formatTaal = Languages.languagesOwn.get(taal.toLowerCase());
@@ -116,22 +116,22 @@ public class Hungarian implements CommandExecutor {
                                 }
                                 Cache.setPlayerCachedLanguage(player.getUniqueId().toString(), Language.getLanguageFromString(formatTaal));
                             });
-                            player.sendMessage(ChatColor.GREEN + "A nyelv változik " + taal + ".");
+                            player.sendMessage(ChatColor.GREEN + "A nyelv megváltoztatva " + taal + ".");
 
                             if (Implement.warnOnSelect(taal)) {
-                                player.sendMessage(red + "Figyelem beszélhetünk csak " + taal + " a chat.");
+                                player.sendMessage(red + "Figyelem! Nem beszélhetsz " + taal + " a chatben.");
                             }
                         } else {
-                            player.sendMessage(red + "Nyelv nem elérhető. Legvalószínűbb, hogy ki van kapcsolva. :(");
+                            player.sendMessage(red + "A nyelv nem elérhető. Legvalószínűbb, hogy ki van kapcsolva. :(");
                         }
                     } else {
-                        player.sendMessage(red + args[0] + " nem elerhető!");
+                        player.sendMessage(red + args[0] + " nem elérhető!");
                     }
                 } else {
                     player.sendMessage(red + "Használat: /nyelv <nyelv>");
                 }
             } else {
-                sender.sendMessage(red + "Hé, Csak azok a játékosok tudják változtatni a nyelvet! :o");
+                sender.sendMessage(red + "Hé, csak a játékosok tudják változtatni a nyelvet! :o");
             }
         }
         return true;
