@@ -65,3 +65,11 @@ commands:
     default: true
     description: Slovenian language command.
     usage: /jezik <jezik>
+  kalba:
+    default: true
+    description: Lithuanian language command.
+    usage: /kalba <Kalba>
+  dil:
+    default: true
+    description: Turkish language command.
+    usage: /dil <dil>

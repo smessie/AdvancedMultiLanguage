@@ -78,6 +78,8 @@ public class Main extends Plugin {
 		ProxyServer.getInstance().getPluginManager().registerCommand(this, new Polish());
 		ProxyServer.getInstance().getPluginManager().registerCommand(this, new Portuguese());
 		ProxyServer.getInstance().getPluginManager().registerCommand(this, new Slovenian());
+		ProxyServer.getInstance().getPluginManager().registerCommand(this, new Lithuanian());
+		ProxyServer.getInstance().getPluginManager().registerCommand(this, new Turkish());
 
 		Languages.addSupportedLanguages();
 

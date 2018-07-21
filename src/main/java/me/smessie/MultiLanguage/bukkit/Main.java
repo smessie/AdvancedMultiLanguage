@@ -68,6 +68,8 @@ public class Main extends JavaPlugin {
 		getCommand("język").setExecutor(new Polish());
 		getCommand("linguagem").setExecutor(new Portuguese());
 		getCommand("jezik").setExecutor(new Slovenian());
+		getCommand("kalba").setExecutor(new Lithuanian());
+		getCommand("dil").setExecutor(new Turkish());
 
 		Languages.addSupportedLanguages();
 
