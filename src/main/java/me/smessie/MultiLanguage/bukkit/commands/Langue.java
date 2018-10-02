@@ -60,7 +60,7 @@ public class Langue implements CommandExecutor {
                             player.sendMessage(ChatColor.GREEN + "Vous avez mit votre langue en " + taal + ".");
 
                             if (Implement.warnOnSelect(taal)) {
-                                player.sendMessage(red + "Attention! Tu ne dois pas parler du " + taal + " dans le chat.");
+                                player.sendMessage(red + "Attention! Tu ne dois pas parler " + taal + " dans le chat.");
                             }
                         } else {
                             player.sendMessage(red + "Cette langue est désactivée! :(");
@@ -90,7 +90,7 @@ public class Langue implements CommandExecutor {
                             player.sendMessage(ChatColor.GREEN + "Vous avez mit votre langue en " + taal + ".");
 
                             if (Implement.warnOnSelect(taal)) {
-                                player.sendMessage(red + "Attention! Tu ne dois pas parler du " + taal + " dans le chat.");
+                                player.sendMessage(red + "Attention! Tu ne dois pas parler " + taal + " dans le chat.");
                             }
                         } else {
                             player.sendMessage(red + "Cette langue est désactivée! :(");
@@ -121,19 +121,19 @@ public class Langue implements CommandExecutor {
                             player.sendMessage(ChatColor.GREEN + "Vous avez mit votre langue en " + taal + ".");
 
                             if (Implement.warnOnSelect(taal)) {
-                                player.sendMessage(red + "Attention! Tu ne dois pas parler du " + taal + " dans le chat.");
+                                player.sendMessage(red + "Attention! Tu ne dois pas parler " + taal + " dans le chat.");
                             }
                         } else {
                             player.sendMessage(red + "Cette langue est désactivée! :(");
                         }
                     } else {
-                        player.sendMessage(red + "Langue " + args[0] + " n'éxiste pas !");
+                        player.sendMessage(red + "La langue " + args[0] + " n'éxiste pas !");
                     }
                 } else {
                     player.sendMessage(red + "Utilisation: /langue <langue>");
                 }
             } else {
-                sender.sendMessage(red + "Hé, Seuls les joueurs en jeu peuvent définir la langue ! :o");
+                sender.sendMessage(red + "Hé, Seuls les joueurs en jeu peuvent éxécuter cette commande ! :o");
             }
         }
         return true;
