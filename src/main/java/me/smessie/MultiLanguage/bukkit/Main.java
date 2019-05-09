@@ -1,103 +1,83 @@
 package me.smessie.MultiLanguage.bukkit;
 
 
-import java.sql.SQLException;
-
-import me.smessie.MultiLanguage.bukkit.commands.*;
+import me.smessie.MultiLanguage.bukkit.commands.English;
 import me.smessie.MultiLanguage.main.Cache;
 import me.smessie.MultiLanguage.main.Languages;
 import me.smessie.MultiLanguage.main.MySQL;
 import me.smessie.MultiLanguage.main.Settings;
-import me.smessie.MultiLanguage.bukkit.DataFile;
-
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.sql.SQLException;
+
 public class Main extends JavaPlugin {
-	
-	public static Main plugin;
-	@SuppressWarnings("unused")
-	private static MySQL mysql;
-	
-	public static String defaultLanguage;
-	
-	public static boolean useMysql;
-	
-	public static String ip = null;
-	public static int port = 3306;
-	public static String username = null;
-	public static String password = null;
-	public static String db = null;
 
-	@Override
-	public void onEnable() {
-		plugin = this;
-		
-		saveDefaultConfig();
-		
-		defaultLanguage = getConfig().getString("defaultLanguage");
-		useMysql = getConfig().getBoolean("use-mysql");
-		Settings.mode = "Bukkit";
-		Settings.useMysql = useMysql;
-		Settings.table = getConfig().getString("mysql.table");
-		Settings.createMysqlTable = getConfig().getBoolean("create-mysqlTable-ifNotExist");
-		Settings.defaultLanguage = getConfig().getString("defaultLanguage");
-		if(useMysql) {
-			connectMysql();
-			try {
-				MySQL.createTable();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			MySQL.disable();
-		} else {
-			DataFile.getInstance().setup(plugin);
-		}
-		
-		getCommand("language").setExecutor(new English());
-		getCommand("langue").setExecutor(new Langue());
-		getCommand("sprache").setExecutor(new Sprache());
-		getCommand("taal").setExecutor(new Taal());
-		getCommand("idioma").setExecutor(new Idioma());
-		getCommand("язык").setExecutor(new Russian());
-		getCommand("valoda").setExecutor(new Valoda());
-		getCommand("Sprog").setExecutor(new Sprog());
-		getCommand("език").setExecutor(new Bulgarian());
-		getCommand("语言").setExecutor(new Chinese());
-		getCommand("nyelv").setExecutor(new Hungarian());
-		getCommand("lingua").setExecutor(new Italian());
-		getCommand("język").setExecutor(new Polish());
-		getCommand("linguagem").setExecutor(new Portuguese());
-		getCommand("jezik").setExecutor(new Slovenian());
-		getCommand("kalba").setExecutor(new Lithuanian());
-		getCommand("dil").setExecutor(new Turkish());
+    public static Main plugin;
 
-		Languages.addSupportedLanguages();
+    public static String defaultLanguage;
 
-		int caching = getConfig().getInt("caching");
-		if(caching > 0) {
-            Cache.setCaching(caching);
+    public static boolean useMysql;
+
+    public static String ip = null;
+    public static int port = 3306;
+    public static String username = null;
+    public static String password = null;
+    public static String db = null;
+
+    @Override
+    public void onEnable() {
+        plugin = this;
+
+        saveDefaultConfig();
+
+        defaultLanguage = getConfig().getString("defaultLanguage");
+        useMysql = getConfig().getBoolean("use-mysql");
+        Settings.mode = "Bukkit";
+        Settings.useMysql = useMysql;
+        Settings.table = getConfig().getString("mysql.table");
+        Settings.createMysqlTable = getConfig().getBoolean("create-mysqlTable-ifNotExist");
+        Settings.defaultLanguage = getConfig().getString("defaultLanguage");
+        if (useMysql) {
+            try (MySQL mySQL = connectMysql()) {
+                mySQL.createTable();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         } else {
-		    getConfig().set("caching", 300000);
-		    saveConfig();
-		    Cache.setCaching(300000);
+            DataFile.getInstance().setup(plugin);
         }
 
-				
-	}
-	public void onDisable() {
-		plugin = null;
-	}
-	
-	public void connectMysql(){
-		
-		ip = getConfig().getString("mysql.host");
-		port = getConfig().getInt("mysql.port");
-		username = getConfig().getString("mysql.user");
-		password = getConfig().getString("mysql.password");
-		db = getConfig().getString("mysql.database");
-		
-		mysql = new MySQL(ip, port, username, password, db);
-				
-	}
+        getCommand("language").setExecutor(new English());
+
+        Languages.addSupportedLanguages();
+
+        int caching = getConfig().getInt("caching");
+        if (caching > 0) {
+            Cache.setCaching(caching);
+        } else {
+            getConfig().set("caching", 7200000);
+            saveConfig();
+            Cache.setCaching(7200000);
+        }
+
+
+    }
+
+    public void onDisable() {
+        plugin = null;
+    }
+
+    public MySQL connectMysql() {
+
+        if (ip == null) {
+            ip = getConfig().getString("mysql.host");
+            port = getConfig().getInt("mysql.port");
+            username = getConfig().getString("mysql.user");
+            password = getConfig().getString("mysql.password");
+            db = getConfig().getString("mysql.database");
+        }
+
+        return new MySQL(ip, port, username, password, db);
+    }
 
 }

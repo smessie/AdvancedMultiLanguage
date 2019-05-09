@@ -16,8 +16,8 @@ create-mysqlTable-ifNotExist: true
 # Information collected can be found here: http://mcstats.org/plugin/AdvancedMultiLanguage
 use-metrics: true
 
-# Caching time in milliseconds (300000 = 5 minutes)
-caching: 300000
+# Caching time in milliseconds (300000 = 5 minutes; 7200000 = 2 hours)
+caching: 7200000
 
 #login of mysql, only needed when use-mysql is set to true.
 mysql:

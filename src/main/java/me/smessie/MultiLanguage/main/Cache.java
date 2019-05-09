@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class Cache {
 
-    private static int caching = 300000;
+    private static int caching = 7200000;
 
     private static HashMap<String, Language> cachedLanguage = new HashMap<>();
     private static HashMap<String, Long> lastCached = new HashMap<>();
@@ -44,13 +44,11 @@ public class Cache {
         }
         String languageString = null;
         if (Settings.useMysql) {
-            Settings.connectMysql();
-            try {
-                languageString = MySQL.getLanguage(uuid);
+            try (MySQL mySQL = Settings.connectMysql()) {
+                languageString = mySQL.getLanguage(uuid);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            MySQL.disable();
         } else {
             languageString = Settings.getLanguage(uuid);
         }

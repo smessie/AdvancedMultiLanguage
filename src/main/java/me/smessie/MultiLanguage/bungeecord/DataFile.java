@@ -1,21 +1,15 @@
 package me.smessie.MultiLanguage.bungeecord;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.logging.Level;
-
 import com.google.common.io.ByteStreams;
-
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ProxyServer;
-import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.plugin.Plugin;
 
+import java.io.*;
+import java.util.logging.Level;
+
 public class DataFile {
-   
+
     public static void setupConfig(Plugin plugin) {
         if (!plugin.getDataFolder().exists()) {
             plugin.getDataFolder().mkdir();
@@ -33,7 +27,7 @@ public class DataFile {
             }
         }
     }
-    
+
     public static void setupData(Plugin p) {
         if (!p.getDataFolder().exists()) {
             p.getDataFolder().mkdir();
