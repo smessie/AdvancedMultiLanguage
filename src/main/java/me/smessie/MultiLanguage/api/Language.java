@@ -2,6 +2,8 @@ package me.smessie.MultiLanguage.api;
 
 import me.smessie.MultiLanguage.main.Languages;
 
+import java.util.HashMap;
+
 public enum Language {
 
     DUTCH("NL"),
@@ -15,7 +17,14 @@ public enum Language {
     HUNGARIAN("HU"),
     ITALIAN("IT"),
     BULGARIAN("BG"),
-    CHINESE("CHS");
+    CHINESE("CHS"),
+    POLISH("PL"),
+    PORTUGUESE("PT"),
+    SLOVENIA("SLU"),
+    LITHUANIAN("LT"),
+    TURKISH("TR"),
+    SLOVAK("SK"),
+    CZECH("CS");
 
     private final String language;
 
@@ -32,6 +41,30 @@ public enum Language {
         return language;
     }
 
+    private final static HashMap<String, Language> STRING_LANGUAGE_HASH_MAP = new HashMap<String, Language>() {
+        {
+            put("NL", DUTCH);
+            put("EN", ENGLISH);
+            put("FR", FRENCH);
+            put("DE", GERMAN);
+            put("ES", SPANISH);
+            put("RU", RUSSIAN);
+            put("LV", LATVIAN);
+            put("DK", DANSK);
+            put("HU", HUNGARIAN);
+            put("IT", ITALIAN);
+            put("BG", BULGARIAN);
+            put("CHS", CHINESE);
+            put("PL", POLISH);
+            put("PT", PORTUGUESE);
+            put("SLU", SLOVENIA);
+            put("LT", LITHUANIAN);
+            put("TR", TURKISH);
+            put("SK", SLOVAK);
+            put("CS", CZECH);
+        }
+    };
+
     /**
      * Parse a language in String format to the Language object
      *
@@ -44,33 +77,6 @@ public enum Language {
         } else if (Languages.languagesOwn.containsKey(language)) {
             language = Languages.languagesOwn.get(language);
         }
-        switch (language) {
-            case "NL":
-                return DUTCH;
-            case "EN":
-                return ENGLISH;
-            case "FR":
-                return FRENCH;
-            case "DE":
-                return GERMAN;
-            case "ES":
-                return SPANISH;
-            case "RU":
-                return RUSSIAN;
-            case "LV":
-                return LATVIAN;
-            case "DK":
-                return DANSK;
-            case "HU":
-                return HUNGARIAN;
-            case "IT":
-                return ITALIAN;
-            case "BG":
-                return BULGARIAN;
-            case "CHS":
-                return CHINESE;
-            default:
-                return null;
-        }
+        return STRING_LANGUAGE_HASH_MAP.get(language);
     }
 }

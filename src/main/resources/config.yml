@@ -49,6 +49,8 @@ languages:
   SLO: true
   LT: true
   TR: true
+  SK: true
+  CS: true
 
 # Warn the players when they select this language that they don't may talk it in the chat. (=true)
 warn-on-select:
@@ -70,3 +72,5 @@ warn-on-select:
   SLO: false
   LT: false
   TR: false
+  SK: false
+  CS: false
