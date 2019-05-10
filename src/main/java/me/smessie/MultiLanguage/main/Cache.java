@@ -52,7 +52,7 @@ public class Cache {
         } else {
             languageString = Settings.getLanguage(uuid);
         }
-        if (languageString == null || languageString.equalsIgnoreCase("")) {
+        if (languageString == null || languageString.equals("")) {
             languageString = Settings.defaultLanguage;
         }
         Language language = Language.getLanguageFromString(languageString);

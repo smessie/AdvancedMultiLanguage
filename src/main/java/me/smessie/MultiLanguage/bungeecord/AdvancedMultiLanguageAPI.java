@@ -21,9 +21,9 @@ public class AdvancedMultiLanguageAPI {
 
     /**
      * Get the language of a player by his uuid
-     * Output: NL, EN, FR, DE, ES, RU, LV, DK
+     * Output: NL, EN, FR, DE, ES, RU, LV, DK, HU
      *
-     * @return
+     * @return Player language
      * @uuid uuid the player's uuid in String format
      */
     public static String getLanguageOfUuid(String uuid) {
@@ -36,7 +36,7 @@ public class AdvancedMultiLanguageAPI {
      * @param uuid   the player's uuid in String format
      * @param path   The place in the file where the translation is located
      * @param plugin Name of your plugin in String format
-     * @return
+     * @return message
      */
     public static String getMessage(String uuid, String path, String plugin) {
         String language = getLanguageOfUuid(uuid);

@@ -20,7 +20,7 @@ public class AdvancedMultiLanguageAPI {
     /**
      * Get the language of a player by his uuid
      *
-     * @return NL, EN, FR, DE, ES, RU, LV, DK
+     * @return NL, EN, FR, DE, ES, RU, LV, DK, HU
      * @uuid uuid the player's uuid in String format
      */
     public static String getLanguageOfUuid(String uuid) {
