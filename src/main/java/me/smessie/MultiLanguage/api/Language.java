@@ -44,32 +44,33 @@ public enum Language {
         } else if (Languages.languagesOwn.containsKey(language)) {
             language = Languages.languagesOwn.get(language);
         }
-        if (language.equalsIgnoreCase("NL")) {
-            return DUTCH;
-        } else if (language.equalsIgnoreCase("EN")) {
-            return ENGLISH;
-        } else if (language.equalsIgnoreCase("FR")) {
-            return FRENCH;
-        } else if (language.equalsIgnoreCase("DE")) {
-            return GERMAN;
-        } else if (language.equalsIgnoreCase("ES")) {
-            return SPANISH;
-        } else if (language.equalsIgnoreCase("RU")) {
-            return RUSSIAN;
-        } else if (language.equalsIgnoreCase("LV")) {
-            return LATVIAN;
-        } else if (language.equalsIgnoreCase("DK")) {
-            return DANSK;
-        } else if (language.equalsIgnoreCase("HU")) {
-            return HUNGARIAN;
-        } else if (language.equalsIgnoreCase("IT")) {
-            return ITALIAN;
-        } else if (language.equalsIgnoreCase("BG")) {
-            return BULGARIAN;
-        } else if (language.equalsIgnoreCase("CHS")) {
-            return CHINESE;
-        } else {
-            return null;
+        switch (language) {
+            case "NL":
+                return DUTCH;
+            case "EN":
+                return ENGLISH;
+            case "FR":
+                return FRENCH;
+            case "DE":
+                return GERMAN;
+            case "ES":
+                return SPANISH;
+            case "RU":
+                return RUSSIAN;
+            case "LV":
+                return LATVIAN;
+            case "DK":
+                return DANSK;
+            case "HU":
+                return HUNGARIAN;
+            case "IT":
+                return ITALIAN;
+            case "BG":
+                return BULGARIAN;
+            case "CHS":
+                return CHINESE;
+            default:
+                return null;
         }
     }
 }
