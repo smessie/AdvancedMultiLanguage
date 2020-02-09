@@ -30,7 +30,7 @@ public class English implements CommandExecutor {
 
             Player player = (Player) sender;
 
-            ResourceBundle bundle = ResourceBundle.getBundle("translations/messages", Locale.forLanguageTag(player.spigot().getLocale()));
+            ResourceBundle bundle = ResourceBundle.getBundle("translations/messages", Locale.forLanguageTag(player.getLocale()));
 
             if (args.length == 1) {
 
