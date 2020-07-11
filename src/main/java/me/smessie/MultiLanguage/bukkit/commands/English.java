@@ -30,7 +30,20 @@ public class English implements CommandExecutor {
 
             Player player = (Player) sender;
 
-            ResourceBundle bundle = ResourceBundle.getBundle("translations/messages", Locale.forLanguageTag(player.getLocale()));
+            Locale locale;
+
+            try {
+                locale = Locale.forLanguageTag(player.getLocale());
+            } catch (NoSuchMethodError e) {
+                String defaultLanguage = Main.plugin.getConfig().getString("defaultLanguage");
+                if (defaultLanguage != null) {
+                    locale = Locale.forLanguageTag(defaultLanguage);
+                } else {
+                    locale = Locale.ENGLISH;
+                }
+            }
+
+            ResourceBundle bundle = ResourceBundle.getBundle("translations/messages", locale);
 
             if (args.length == 1) {
 
