@@ -3,7 +3,7 @@
 #####        Author: smessie         #####
 ##########################################
 
-# Wich language will be token as default.
+# Which language will be token as default.
 defaultLanguage: EN
 
 #set to true for using MySQL instead of a flatfile
@@ -51,6 +51,7 @@ languages:
   TR: true
   SK: true
   CS: true
+  KO: true
 
 # Warn the players when they select this language that they don't may talk it in the chat. (=true)
 warn-on-select:
@@ -74,3 +75,4 @@ warn-on-select:
   TR: false
   SK: false
   CS: false
+  KO: false

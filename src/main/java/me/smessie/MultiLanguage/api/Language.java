@@ -24,7 +24,8 @@ public enum Language {
     LITHUANIAN("LT"),
     TURKISH("TR"),
     SLOVAK("SK"),
-    CZECH("CS");
+    CZECH("CS"),
+    KOREAN("KO");
 
     private final String language;
 
@@ -62,6 +63,7 @@ public enum Language {
             put("TR", TURKISH);
             put("SK", SLOVAK);
             put("CS", CZECH);
+            put("KO", KOREAN);
         }
     };
 
