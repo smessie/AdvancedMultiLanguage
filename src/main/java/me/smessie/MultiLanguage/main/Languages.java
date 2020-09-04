@@ -31,6 +31,7 @@ public class Languages {
 		languages.add("SK");	languagesOwn.put("slovečina", "SK");	languagesFull.put("slovak", "SK");
 		languages.add("CS");	languagesOwn.put("ceština", "CS");	languagesFull.put("czech", "CS");
 		languages.add("KO");	languagesOwn.put("한국어", "KO");	languagesFull.put("korean", "KO");
+		languages.add("RO");	languagesOwn.put("română", "RO");	languagesFull.put("romanian", "RO");
 	}
 
     public static boolean isSupportedLanguage(String language) {

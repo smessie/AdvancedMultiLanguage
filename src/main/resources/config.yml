@@ -52,6 +52,7 @@ languages:
   SK: true
   CS: true
   KO: true
+  RO: true
 
 # Warn the players when they select this language that they don't may talk it in the chat. (=true)
 warn-on-select:
@@ -76,3 +77,4 @@ warn-on-select:
   SK: false
   CS: false
   KO: false
+  RO: false
